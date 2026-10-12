@@ -1,0 +1,310 @@
+/* ═══ Contenedor general ═══ */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ═══ Escalón 1: utilidad ═══ */
+.nav__utilidad {
+    background: var(--act-vino-900);
+    color: var(--act-vino-texto-suave);
+    font-size: 12.5px;
+}
+
+.nav__utilidad-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 34px;
+}
+
+.nav__leyenda {
+    margin: 0;
+    font-weight: 500;
+}
+
+.nav__utilidad-lista {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav__utilidad-lista li+li {
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+    margin-left: 14px;
+    padding-left: 14px;
+}
+
+.nav__utilidad-enlace {
+    color: var(--act-vino-texto-suave);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.nav__utilidad-enlace:hover,
+.nav__utilidad-enlace:focus-visible {
+    color: #FFFFFF;
+}
+
+.nav__pais {
+    font-weight: 600;
+}
+
+/* En móvil la leyenda sola basta: los enlaces se esconden */
+@media (max-width: 767px) {
+    .nav__utilidad-lista {
+        display: none;
+    }
+
+    .nav__leyenda {
+        font-size: 11.5px;
+    }
+}
+
+/* ═══ Escalón 2: marca y navegación ═══ */
+.nav__principal {
+    background: var(--act-vino);
+}
+
+.nav__principal-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 76px;
+}
+
+/* ── Marca ── */
+.nav__marca {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.nav__logo {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: #FFFFFF;
+}
+
+.nav__descriptor {
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.32);
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    color: var(--act-vino-texto);
+}
+
+/* ── Menú ── */
+.nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav__lista {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav__enlace {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--act-vino-texto);
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav__enlace:hover,
+.nav__enlace:focus-visible {
+    color: #FFFFFF;
+    border-bottom-color: var(--act-ambar);
+}
+
+/* ── Botón de cotización ── */
+.nav__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    background: var(--act-ambar);
+    /* El texto sobre ámbar SIEMPRE va oscuro: en blanco daría 1.7:1 */
+    color: var(--act-pizarra);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+}
+
+.nav__cta:hover,
+.nav__cta:focus-visible {
+    background: var(--act-ambar-600);
+}
+
+/* ── Hamburguesa (solo móvil) ── */
+.nav__hamburguesa {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav__hamburguesa-linea {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 2px;
+}
+
+/* ═══ Escalón 3: barras SMPTE ═══ */
+.nav__barras {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: var(--act-barras-alto);
+}
+
+.nav__barra {
+    display: block;
+}
+
+.nav__barra--gris {
+    background: var(--smpte-gris);
+}
+
+.nav__barra--amarillo {
+    background: var(--smpte-amarillo);
+}
+
+.nav__barra--cian {
+    background: var(--smpte-cian);
+}
+
+.nav__barra--verde {
+    background: var(--smpte-verde);
+}
+
+.nav__barra--magenta {
+    background: var(--smpte-magenta);
+}
+
+.nav__barra--rojo {
+    background: var(--smpte-rojo);
+}
+
+.nav__barra--azul {
+    background: var(--smpte-azul);
+}
+
+/* ═══ Responsivo ═══ */
+@media (max-width: 1023px) {
+    .nav__hamburguesa {
+        display: flex;
+    }
+
+    .nav__principal-fila {
+        flex-wrap: wrap;
+        min-height: 68px;
+    }
+
+    .nav__menu {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        width: 100%;
+        padding: 8px 0 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .nav__menu--abierto {
+        display: flex;
+    }
+
+    .nav__lista {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav__enlace {
+        min-height: 52px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav__enlace:hover,
+    .nav__enlace:focus-visible {
+        border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .nav__cta {
+        margin-top: 16px;
+    }
+
+    .nav__logo {
+        font-size: 32px;
+    }
+
+    .nav__descriptor {
+        font-size: 10.5px;
+    }
+}
+
+@media (max-width: 479px) {
+    .nav__descriptor {
+        display: none;
+    }
+
+    :root {
+        --act-barras-alto: 5px;
+    }
+}
+
+/* ═══ Accesibilidad ═══ */
+.nav a:focus-visible,
+.nav button:focus-visible {
+    outline: 2px solid var(--act-ambar);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav * {
+        transition: none !important;
+    }
+}

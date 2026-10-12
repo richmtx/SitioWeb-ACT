@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    /* Marca */
+    --act-vino: #671211;
+    --act-vino-900: #4E0D0C;
+    --act-vino-texto: #F7E9E9;
+    --act-vino-texto-suave: #E0B3B2;
+
+    /* Acción */
+    --act-ambar: #FCBA28;
+    --act-ambar-600: #E2A415;
+
+    /* Neutros */
+    --act-pizarra: #25364A;
+    --act-carbon: #343A40;
+    --act-gris: #6B7280;
+    --act-borde: #DDE1E6;
+    --act-superficie: #FFFFFF;
+    --act-fondo: #F3F4F6;
+
+    /* Estado */
+    --act-exito: #0E7C66;
+
+    /* Barras SMPTE — versión atenuada, convive con la marca */
+    --smpte-gris: #A8A8A8;
+    --smpte-amarillo: #C9A227;
+    --smpte-cian: #2E93A8;
+    --smpte-verde: #3C8F57;
+    --smpte-magenta: #8E4A74;
+    --smpte-rojo: #A63227;
+    --smpte-azul: #35508C;
+
+    /* Medidas */
+    --act-contenedor: 1280px;
+    --act-barras-alto: 6px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--act-carbon);
+    background: var(--act-fondo);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    color: var(--act-pizarra);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+}
+
+a {
+    color: var(--act-vino);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font: inherit;
+}

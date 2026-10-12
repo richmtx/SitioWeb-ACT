@@ -1,0 +1,67 @@
+<header class="nav">
+
+    <!-- ══ Escalón 1: barra de utilidad ══ -->
+    <div class="nav__utilidad">
+        <div class="nav__contenedor nav__utilidad-fila">
+            <p class="nav__leyenda">
+                Más de 35 años en soluciones para radio y televisión.
+            </p>
+            <ul class="nav__utilidad-lista">
+                <li><a class="nav__utilidad-enlace" href="/soporte">Soporte</a></li>
+                <li><a class="nav__utilidad-enlace" href="/atencion">Atención a clientes</a></li>
+                <li><span class="nav__pais">México</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ══ Escalón 2: marca y navegación ══ -->
+    <div class="nav__principal">
+        <div class="nav__contenedor nav__principal-fila">
+
+            <a class="nav__marca" href="/" aria-label="ACT — ir al inicio">
+                <span class="nav__logo">ACT</span>
+                <span class="nav__descriptor">
+                    Equipo profesional<br>para radio y televisión
+                </span>
+            </a>
+
+            <button class="nav__hamburguesa" type="button" [attr.aria-expanded]="menuAbierto()"
+                aria-controls="menu-principal" aria-label="Abrir menú de navegación" (click)="alternarMenu()">
+                <span class="nav__hamburguesa-linea"></span>
+                <span class="nav__hamburguesa-linea"></span>
+                <span class="nav__hamburguesa-linea"></span>
+            </button>
+
+            <nav id="menu-principal" class="nav__menu" [class.nav__menu--abierto]="menuAbierto()"
+                aria-label="Navegación principal">
+
+                <ul class="nav__lista">
+                    @for (enlace of enlaces; track enlace.url) {
+                    <li>
+                        <a class="nav__enlace" [href]="enlace.url" (click)="cerrarMenu()">
+                            {{ enlace.etiqueta }}
+                        </a>
+                    </li>
+                    }
+                </ul>
+
+                <a class="nav__cta" href="/cotizacion" (click)="cerrarMenu()">
+                    Solicitar cotización
+                </a>
+            </nav>
+
+        </div>
+    </div>
+
+    <!-- ══ Escalón 3: barras de color SMPTE ══ -->
+    <div class="nav__barras" aria-hidden="true">
+        <span class="nav__barra nav__barra--gris"></span>
+        <span class="nav__barra nav__barra--amarillo"></span>
+        <span class="nav__barra nav__barra--cian"></span>
+        <span class="nav__barra nav__barra--verde"></span>
+        <span class="nav__barra nav__barra--magenta"></span>
+        <span class="nav__barra nav__barra--rojo"></span>
+        <span class="nav__barra nav__barra--azul"></span>
+    </div>
+
+</header>
