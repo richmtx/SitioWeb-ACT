@@ -1,0 +1,81 @@
+<footer class="pie">
+
+    <!-- ══ Bloque de cierre ══ -->
+    <div class="pie__cierre">
+        <div class="pie__cierre-contenido">
+            <h2 class="pie__cierre-titulo">¿Listo para salir al aire?</h2>
+            <p class="pie__cierre-texto">
+                Cotizamos equipo, servicio y proyectos llave en mano para radio,
+                televisión y audio.
+            </p>
+        </div>
+    </div>
+
+    <!-- ══ Fondo de barras EBU + tarjeta ══ -->
+    <div class="pie__fondo">
+        <div class="pie__tarjeta">
+
+            <div class="pie__columnas">
+
+                @for (columna of columnas; track columna.titulo) {
+                <div class="pie__columna">
+                    <h3 class="pie__columna-titulo">{{ columna.titulo }}</h3>
+                    <ul class="pie__lista">
+                        @for (enlace of columna.enlaces; track enlace.url) {
+                        <li>
+                            <a class="pie__enlace" [href]="enlace.url">{{ enlace.etiqueta }}</a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                }
+
+                <!-- Columna de contacto: no son enlaces de navegación sino datos -->
+                <div class="pie__columna">
+                    <h3 class="pie__columna-titulo">Contacto</h3>
+                    <address class="pie__datos">
+                        <p class="pie__dato">
+                            Calle 5 No. 378, Col. Liberación<br>
+                            Azcapotzalco, CDMX, C.P. 02930
+                        </p>
+                        <p class="pie__dato">
+                            <a class="pie__enlace" href="tel:+525560781093">55 6078 1093</a><br>
+                            <a class="pie__enlace" href="tel:+525530819218">55 3081 9218</a><br>
+                            <a class="pie__enlace" href="tel:+525532261809">55 3226 1809</a>
+                        </p>
+                        <p class="pie__dato">
+                            <a class="pie__enlace" href="mailto:uramirez.act@gmail.com">
+                                uramirez.act&#64;gmail.com
+                            </a>
+                        </p>
+                        <p class="pie__dato pie__dato--apagado">
+                            Lunes a viernes, 9:00 a 18:00<br>
+                            Servicio técnico 24×7×365<br>
+                            Atención con cita previa
+                        </p>
+                    </address>
+                </div>
+
+            </div>
+
+            <!-- ══ Base de la tarjeta ══ -->
+            <div class="pie__base">
+                <span class="pie__marca">ACT</span>
+
+                <p class="pie__legal">
+                    Audio y Consultoría en Televisión Digital Terrestre S.A. de C.V.<br>
+                    © {{ anio }} · Todos los derechos reservados
+                </p>
+
+                <a class="pie__mapa" href="https://maps.app.goo.gl/" target="_blank" rel="noopener">
+                    Ver en Google Maps
+                </a>
+
+                <!-- Redes sociales: ACT todavía no las tiene creadas.
+             Cuando existan, se reemplaza el enlace del mapa por los iconos. -->
+            </div>
+
+        </div>
+    </div>
+
+</footer>
