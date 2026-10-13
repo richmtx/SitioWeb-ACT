@@ -3,8 +3,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    /* 116px = los tres escalones del navbar (34 + 76 + 6) */
-    min-height: clamp(520px, calc(100vh - 116px), 820px);
+    min-height: clamp(520px, calc(100vh - var(--act-nav-alto)), 820px);
     overflow: hidden;
     background: var(--act-pizarra);
     /* color de respaldo mientras carga la foto */

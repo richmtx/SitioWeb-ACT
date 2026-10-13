@@ -32,6 +32,11 @@
     /* Medidas */
     --act-contenedor: 1280px;
     --act-barras-alto: 6px;
+    --act-nav-alto: 116px;   /* los tres escalones del navbar */
+}
+
+@media (max-width: 1023px) {
+  :root { --act-nav-alto: 108px; }
 }
 
 *,

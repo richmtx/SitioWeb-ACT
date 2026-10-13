@@ -1,0 +1,205 @@
+/* ═══ Encabezado de página ═══ */
+.encabezado {
+    display: flex;
+    align-items: center;
+    min-height: 260px;
+    background: var(--act-pizarra);
+}
+
+.encabezado__contenido {
+    width: 100%;
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.encabezado__titulo {
+    margin: 0;
+    font-size: clamp(40px, 5.2vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+
+.encabezado__texto {
+    margin: 0;
+    max-width: 56ch;
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+/* ═══ Sección de tarjetas ═══ */
+/* OJO: ni esta sección ni sus ancestros (main, app-root, body) pueden llevar
+   overflow: hidden / clip, porque eso rompe el position: sticky. */
+.servicios {
+    padding: 64px 24px 96px;
+}
+
+.servicios__pila {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+}
+
+/* ═══ Tarjeta: efecto de pila ═══ */
+.servicios__tarjeta {
+    /* Medidas de la pila */
+    --pila-margen: 32px;
+    /* aire entre el navbar y la primera tarjeta */
+    --pila-escalon: 16px;
+    /* lo que asoma de cada tarjeta anterior */
+    --tarjeta-relleno: 48px;
+
+    /* Alto que le queda a la tarjeta más baja de la pila (la sexta, con cinco
+       escalones encima) dejando 24px libres abajo. Una tarjeta sticky más alta
+       que esto dejaría contenido fuera de pantalla sin forma de alcanzarlo. */
+    --tarjeta-alto-max: calc(100dvh - var(--act-nav-alto) - var(--pila-margen) - (5 * var(--pila-escalon)) - 24px);
+
+    position: sticky;
+    top: calc(var(--act-nav-alto) + var(--pila-margen) + (var(--i) * var(--pila-escalon)));
+    /* Cada tarjeta tapa a la anterior; todas quedan debajo del navbar (100) */
+    z-index: calc(var(--i) + 1);
+
+    display: grid;
+    grid-template-columns: 45fr 55fr;
+    align-items: center;
+    gap: 48px;
+    min-height: min(520px, var(--tarjeta-alto-max));
+    margin-bottom: 40px;
+    padding: var(--tarjeta-relleno);
+    /* El fondo debe ser sólido: transparente dejaría ver las de abajo */
+    background: var(--act-superficie);
+    border: 1px solid var(--act-borde);
+    border-radius: 24px;
+
+    /* Para los enlaces del pie (/servicios#instalacion, etc.) */
+    scroll-margin-top: calc(var(--act-nav-alto) + var(--pila-margen));
+}
+
+/* Fondos alternados: así se distingue el borde de una tarjeta y la siguiente */
+.servicios__tarjeta:nth-child(even) {
+    background: var(--act-fondo);
+}
+
+.servicios__tarjeta:last-child {
+    margin-bottom: 0;
+}
+
+/* ═══ Tarjeta: columna de texto ═══ */
+.servicios__cuerpo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.servicios__etiqueta {
+    margin: 0;
+    padding: 6px 14px;
+    border: 1px solid var(--act-vino);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--act-vino);
+}
+
+.servicios__titulo {
+    margin: 0;
+    font-size: clamp(30px, 3.4vw, 46px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--act-pizarra);
+    text-wrap: balance;
+}
+
+.servicios__texto {
+    margin: 0;
+    max-width: 46ch;
+    font-size: clamp(16px, 1.3vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--act-carbon);
+}
+
+/* ═══ Tarjeta: imagen ═══ */
+.servicios__imagen {
+    justify-self: end;
+    width: 100%;
+    /* Cuadrada, pero nunca más alta que el espacio visible de la tarjeta */
+    max-width: max(240px, calc(var(--tarjeta-alto-max) - (2 * var(--tarjeta-relleno)) - 2px));
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 16px;
+    /* color de respaldo mientras carga la foto */
+    background: var(--act-borde);
+}
+
+/* ═══ Responsivo ═══ */
+/* Una sola columna: imagen arriba, texto abajo */
+@media (max-width: 899px) {
+    .servicios__tarjeta {
+        --tarjeta-relleno: 32px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .servicios__imagen {
+        order: -1;
+        justify-self: start;
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 767px) {
+    .encabezado {
+        min-height: 200px;
+    }
+
+    .encabezado__contenido {
+        padding: 40px 24px;
+    }
+
+    .servicios {
+        padding: 40px 16px 64px;
+    }
+
+    .servicios__tarjeta {
+        --tarjeta-relleno: 24px;
+        min-height: 0;
+        margin-bottom: 24px;
+        border-radius: 20px;
+    }
+
+    .servicios__imagen {
+        max-width: 100%;
+    }
+}
+
+/* ═══ Apagar el efecto de pila ═══ */
+/* 1. Móvil: tarjetas normales, una debajo de otra.
+   2. Ventanas muy bajas: la tarjeta no cabría completa estando pegada.
+   3. Una columna en ventana baja: la tarjeta vertical tampoco cabría. */
+@media (max-width: 767px),
+(max-height: 599px),
+(max-width: 899px) and (max-height: 899px) {
+    .servicios__tarjeta {
+        position: static;
+    }
+}
+
+/* Quien pide menos movimiento ve las tarjetas sin el efecto */
+@media (prefers-reduced-motion: reduce) {
+    .servicios__tarjeta {
+        position: static;
+    }
+}
