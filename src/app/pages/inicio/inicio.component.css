@@ -24,10 +24,10 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to right,
-            rgba(17, 12, 12, 0.90) 0%,
-            rgba(17, 12, 12, 0.72) 38%,
-            rgba(17, 12, 12, 0.28) 70%,
-            rgba(17, 12, 12, 0.10) 100%);
+            rgba(10, 10, 14, 0.90) 0%,
+            rgba(10, 10, 14, 0.72) 38%,
+            rgba(10, 10, 14, 0.28) 70%,
+            rgba(10, 10, 14, 0.10) 100%);
 }
 
 .hero__contenido {
@@ -47,9 +47,9 @@
     margin: 0;
     max-width: 14ch;
     font-size: clamp(40px, 6vw, 72px);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.02;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.025em;
     color: #FFFFFF;
     text-wrap: balance;
 }
@@ -76,9 +76,9 @@
     /* El velo se vuelve vertical: el texto queda sobre la parte oscura de arriba */
     .hero__velo {
         background: linear-gradient(to bottom,
-                rgba(17, 12, 12, 0.88) 0%,
-                rgba(17, 12, 12, 0.72) 55%,
-                rgba(17, 12, 12, 0.45) 100%);
+                rgba(10, 10, 14, 0.88) 0%,
+                rgba(10, 10, 14, 0.72) 55%,
+                rgba(10, 10, 14, 0.45) 100%);
     }
 
     .hero__contenido {

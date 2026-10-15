@@ -1,9 +1,10 @@
 :root {
     /* Marca */
-    --act-vino: #671211;
-    --act-vino-900: #4E0D0C;
-    --act-vino-texto: #F7E9E9;
-    --act-vino-texto-suave: #E0B3B2;
+    --act-marino: #050833;
+    --act-marino-900: #0D1250;   /* barra de utilidad: ahora más clara, no más oscura */
+    --act-marino-texto: #E9ECF7;
+    --act-marino-texto-suave: #AEB6D8;
+    --act-enlace: #2B4BB8;       /* enlaces en texto: el marino solo sería ilegible */
 
     /* Acción */
     --act-ambar: #FCBA28;
@@ -16,6 +17,10 @@
     --act-borde: #DDE1E6;
     --act-superficie: #FFFFFF;
     --act-fondo: #F3F4F6;
+
+    /* Tintes claros para fondos de tarjeta */
+    --act-marino-050: #EDEFF7;   /* azul muy claro derivado del marino */
+    --act-ambar-050: #FEF6E3;    /* ámbar muy claro */
 
     /* Estado */
     --act-exito: #0E7C66;
@@ -32,11 +37,14 @@
     /* Medidas */
     --act-contenedor: 1280px;
     --act-barras-alto: 6px;
-    --act-nav-alto: 116px;   /* los tres escalones del navbar */
+    --act-nav-alto: 116px;
+    /* los tres escalones del navbar */
 }
 
 @media (max-width: 1023px) {
-  :root { --act-nav-alto: 108px; }
+    :root {
+        --act-nav-alto: 108px;
+    }
 }
 
 *,
@@ -65,13 +73,13 @@ h3,
 h4 {
     margin: 0;
     color: var(--act-pizarra);
-    font-weight: 800;
-    letter-spacing: -0.025em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
     line-height: 1.15;
 }
 
 a {
-    color: var(--act-vino);
+    color: var(--act-enlace);
 }
 
 img {

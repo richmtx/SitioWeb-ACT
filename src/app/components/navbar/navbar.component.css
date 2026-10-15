@@ -13,8 +13,8 @@
 
 /* ═══ Escalón 1: utilidad ═══ */
 .nav__utilidad {
-    background: var(--act-vino-900);
-    color: var(--act-vino-texto-suave);
+    background: var(--act-marino-900);
+    color: var(--act-marino-texto-suave);
     font-size: 12.5px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .nav__utilidad-enlace {
-    color: var(--act-vino-texto-suave);
+    color: var(--act-marino-texto-suave);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.15s ease;
@@ -75,7 +75,7 @@
 
 /* ═══ Escalón 2: marca y navegación ═══ */
 .nav__principal {
-    background: var(--act-vino);
+    background: var(--act-marino);
 }
 
 .nav__principal-fila {
@@ -111,7 +111,7 @@
     line-height: 1.35;
     letter-spacing: 0.055em;
     text-transform: uppercase;
-    color: var(--act-vino-texto);
+    color: var(--act-marino-texto);
 }
 
 /* ── Menú ── */
@@ -134,7 +134,7 @@
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    color: var(--act-vino-texto);
+    color: var(--act-marino-texto);
     text-decoration: none;
     font-size: 15.5px;
     font-weight: 600;

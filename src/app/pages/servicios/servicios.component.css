@@ -1,205 +1,225 @@
-/* ═══ Encabezado de página ═══ */
-.encabezado {
-    display: flex;
-    align-items: center;
-    min-height: 260px;
-    background: var(--act-pizarra);
-}
-
-.encabezado__contenido {
-    width: 100%;
-    max-width: var(--act-contenedor);
-    margin: 0 auto;
-    padding: 48px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-}
-
-.encabezado__titulo {
-    margin: 0;
-    font-size: clamp(40px, 5.2vw, 64px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: #FFFFFF;
-}
-
-.encabezado__texto {
-    margin: 0;
-    max-width: 56ch;
-    font-size: clamp(16px, 1.5vw, 19px);
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.84);
-}
-
-/* ═══ Sección de tarjetas ═══ */
-/* OJO: ni esta sección ni sus ancestros (main, app-root, body) pueden llevar
-   overflow: hidden / clip, porque eso rompe el position: sticky. */
+/* ═══ Sección: un solo fondo de corrido, del título a la última tarjeta ═══ */
 .servicios {
-    padding: 64px 24px 96px;
-}
-
-.servicios__pila {
-    max-width: var(--act-contenedor);
-    margin: 0 auto;
-}
-
-/* ═══ Tarjeta: efecto de pila ═══ */
-.servicios__tarjeta {
-    /* Medidas de la pila */
-    --pila-margen: 32px;
-    /* aire entre el navbar y la primera tarjeta */
-    --pila-escalon: 16px;
-    /* lo que asoma de cada tarjeta anterior */
-    --tarjeta-relleno: 48px;
-
-    /* Alto que le queda a la tarjeta más baja de la pila (la sexta, con cinco
-       escalones encima) dejando 24px libres abajo. Una tarjeta sticky más alta
-       que esto dejaría contenido fuera de pantalla sin forma de alcanzarlo. */
-    --tarjeta-alto-max: calc(100dvh - var(--act-nav-alto) - var(--pila-margen) - (5 * var(--pila-escalon)) - 24px);
-
-    position: sticky;
-    top: calc(var(--act-nav-alto) + var(--pila-margen) + (var(--i) * var(--pila-escalon)));
-    /* Cada tarjeta tapa a la anterior; todas quedan debajo del navbar (100) */
-    z-index: calc(var(--i) + 1);
-
-    display: grid;
-    grid-template-columns: 45fr 55fr;
-    align-items: center;
-    gap: 48px;
-    min-height: min(520px, var(--tarjeta-alto-max));
-    margin-bottom: 40px;
-    padding: var(--tarjeta-relleno);
-    /* El fondo debe ser sólido: transparente dejaría ver las de abajo */
+    /* Blanco: así las tarjetas con --act-fondo conservan su forma */
     background: var(--act-superficie);
-    border: 1px solid var(--act-borde);
-    border-radius: 24px;
-
-    /* Para los enlaces del pie (/servicios#instalacion, etc.) */
-    scroll-margin-top: calc(var(--act-nav-alto) + var(--pila-margen));
+    /* 88 / 96px en escritorio, 56 / 64px en móvil */
+    padding: clamp(56px, 7vw, 88px) 0 clamp(64px, 7.5vw, 96px);
 }
 
-/* Fondos alternados: así se distingue el borde de una tarjeta y la siguiente */
-.servicios__tarjeta:nth-child(even) {
-    background: var(--act-fondo);
-}
-
-.servicios__tarjeta:last-child {
-    margin-bottom: 0;
-}
-
-/* ═══ Tarjeta: columna de texto ═══ */
-.servicios__cuerpo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.servicios__etiqueta {
-    margin: 0;
-    padding: 6px 14px;
-    border: 1px solid var(--act-vino);
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1.4;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--act-vino);
-}
-
+/* ═══ Encabezado ═══ */
 .servicios__titulo {
-    margin: 0;
-    font-size: clamp(30px, 3.4vw, 46px);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    color: var(--act-pizarra);
+    /* 48px hasta la retícula en escritorio, 32px en móvil */
+    margin: 0 0 clamp(32px, 4vw, 48px);
+    padding: 0 24px;
+    text-align: center;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
     text-wrap: balance;
 }
 
-.servicios__texto {
+/* ═══ Retícula ═══ */
+.bento__reticula {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    /* 290px de base; la fila crece si el texto lo necesita, nunca lo corta */
+    grid-auto-rows: minmax(290px, auto);
+    gap: 20px;
+}
+
+.servicio--integracion { grid-column: 5 / 13; grid-row: 1 / 2; }
+.servicio--instalacion { grid-column: 1 / 5; grid-row: 1 / 3; }
+.servicio--mantenimiento { grid-column: 9 / 13; grid-row: 2 / 4; }
+.servicio--soporte { grid-column: 5 / 9; grid-row: 2 / 3; }
+.servicio--asesoria { grid-column: 1 / 6; grid-row: 3 / 4; }
+.servicio--capacitacion { grid-column: 6 / 9; grid-row: 3 / 4; }
+
+/* ── Base común ── */
+.servicio {
+    position: relative;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--act-fondo);
+    scroll-margin-top: calc(var(--act-nav-alto) + 16px);
+}
+
+/* La imagen va absoluta dentro de su contenedor: no infla la fila */
+.servicio__media {
+    position: relative;
+    overflow: hidden;
+}
+
+.servicio__imagen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.servicio__cuerpo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+}
+
+.servicio__etiqueta {
     margin: 0;
-    max-width: 46ch;
-    font-size: clamp(16px, 1.3vw, 18px);
-    font-weight: 400;
-    line-height: 1.6;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--act-enlace);
+}
+
+.servicio__titulo {
+    /* peso, interlineado y tracking vienen de styles.css */
+    font-size: clamp(21px, 1.9vw, 26px);
+}
+
+.servicio__texto {
+    margin: 0;
+    font-size: 16px;
     color: var(--act-carbon);
 }
 
-/* ═══ Tarjeta: imagen ═══ */
-.servicios__imagen {
-    justify-self: end;
-    width: 100%;
-    /* Cuadrada, pero nunca más alta que el espacio visible de la tarjeta */
-    max-width: max(240px, calc(var(--tarjeta-alto-max) - (2 * var(--tarjeta-relleno)) - 2px));
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 16px;
-    /* color de respaldo mientras carga la foto */
-    background: var(--act-borde);
+.servicio--instalacion { background: var(--act-marino-050); }
+
+.servicio--mantenimiento {
+    background: var(--act-superficie);
+    border: 1px solid var(--act-borde);
 }
+
+/* ═══ Tipo A — vertical: imagen arriba (~60 %), texto abajo ═══ */
+.servicio--vertical { flex-direction: column; }
+
+.servicio--vertical .servicio__media {
+    flex: 1 1 60%;
+    min-height: 180px;
+}
+
+/* ═══ Tipo B — horizontal: texto 55 %, imagen 45 % ═══ */
+.servicio--horizontal {
+    display: grid;
+    grid-template-columns: 11fr 9fr;
+    gap: 8px;
+    padding: 24px;
+}
+
+.servicio--horizontal .servicio__cuerpo {
+    order: -1;
+    justify-content: center;
+    padding: 8px 16px 8px 8px;
+}
+
+.servicio--horizontal .servicio__media { border-radius: 14px; }
+
+/* ═══ Tipo C — foto a sangre con velo ═══ */
+.servicio--foto {
+    flex-direction: column;
+    justify-content: flex-end;
+    background: var(--act-marino);
+}
+
+.servicio--foto .servicio__media { position: absolute; inset: 0; }
+
+.servicio__velo {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5, 8, 51, 0.88), rgba(5, 8, 51, 0.10));
+}
+
+/* Respaldo bajo el texto: la parte alta del velo (0.10) no garantiza
+   contraste sobre una foto clara. Aquí el fondo nunca baja de 0.88:
+   blanco ≥ 12:1 y ámbar ≥ 8.5:1 aun con la foto en blanco puro. */
+.servicio--foto .servicio__cuerpo {
+    padding: 48px 28px 28px;
+    background: linear-gradient(to top, rgba(5, 8, 51, 0.88) calc(100% - 40px), rgba(5, 8, 51, 0));
+}
+
+.servicio--foto .servicio__etiqueta { color: var(--act-ambar); }
+
+.servicio--foto .servicio__titulo,
+.servicio--foto .servicio__texto { color: #FFFFFF; }
+
+/* ═══ Tipo D — horizontal invertida: imagen cuadrada a la izquierda ═══ */
+.servicio--invertida {
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+}
+
+.servicio--invertida .servicio__media {
+    flex: 0 0 clamp(132px, 14vw, 180px);
+    aspect-ratio: 1;
+    border-radius: 14px;
+}
+
+.servicio--invertida .servicio__cuerpo { padding: 0; }
 
 /* ═══ Responsivo ═══ */
-/* Una sola columna: imagen arriba, texto abajo */
-@media (max-width: 899px) {
-    .servicios__tarjeta {
-        --tarjeta-relleno: 32px;
-        grid-template-columns: 1fr;
-        gap: 28px;
+
+/* Tableta: 6 columnas, 4 filas. Dos bloques espejo de 6×2 celdas:
+   arriba la alta a la izquierda, abajo la alta a la derecha. */
+@media (max-width: 1023px) {
+    .bento__reticula { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+    .servicio--instalacion { grid-column: 1 / 4; grid-row: 1 / 3; }
+    .servicio--integracion { grid-column: 4 / 7; grid-row: 1 / 2; }
+    .servicio--soporte { grid-column: 4 / 7; grid-row: 2 / 3; }
+    .servicio--asesoria { grid-column: 1 / 4; grid-row: 3 / 4; }
+    .servicio--mantenimiento { grid-column: 4 / 7; grid-row: 3 / 5; }
+    .servicio--capacitacion { grid-column: 1 / 4; grid-row: 4 / 5; }
+
+    /* En media retícula B y D no caben a lo ancho: imagen arriba */
+    .servicio--horizontal,
+    .servicio--invertida {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
     }
 
-    .servicios__imagen {
-        order: -1;
-        justify-self: start;
-        max-width: 360px;
+    .servicio--horizontal .servicio__media,
+    .servicio--invertida .servicio__media {
+        flex: 0 0 auto;
+        height: 160px;
+        border-radius: 0;
+    }
+
+    .servicio--horizontal .servicio__cuerpo,
+    .servicio--invertida .servicio__cuerpo {
+        order: 0;
+        padding: 24px;
     }
 }
 
+/* Móvil: una columna en el orden del HTML, alto automático */
 @media (max-width: 767px) {
-    .encabezado {
-        min-height: 200px;
+    .bento__reticula {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: auto;
+        gap: 16px;
+        padding: 0 16px;
     }
 
-    .encabezado__contenido {
-        padding: 40px 24px;
-    }
+    .bento__reticula > .servicio { grid-column: auto; grid-row: auto; }
 
-    .servicios {
-        padding: 40px 16px 64px;
-    }
-
-    .servicios__tarjeta {
-        --tarjeta-relleno: 24px;
+    .servicio--vertical .servicio__media,
+    .servicio--horizontal .servicio__media,
+    .servicio--invertida .servicio__media {
+        flex: 0 0 auto;
+        height: auto;
         min-height: 0;
-        margin-bottom: 24px;
-        border-radius: 20px;
+        aspect-ratio: 16 / 10;
     }
 
-    .servicios__imagen {
-        max-width: 100%;
-    }
-}
-
-/* ═══ Apagar el efecto de pila ═══ */
-/* 1. Móvil: tarjetas normales, una debajo de otra.
-   2. Ventanas muy bajas: la tarjeta no cabría completa estando pegada.
-   3. Una columna en ventana baja: la tarjeta vertical tampoco cabría. */
-@media (max-width: 767px),
-(max-height: 599px),
-(max-width: 899px) and (max-height: 899px) {
-    .servicios__tarjeta {
-        position: static;
-    }
-}
-
-/* Quien pide menos movimiento ve las tarjetas sin el efecto */
-@media (prefers-reduced-motion: reduce) {
-    .servicios__tarjeta {
-        position: static;
-    }
+    .servicio--foto { min-height: 320px; }
 }

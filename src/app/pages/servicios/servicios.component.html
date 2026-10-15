@@ -1,35 +1,31 @@
-<!-- ══ Encabezado de página ══ -->
-<section class="encabezado">
-    <div class="encabezado__contenido">
-        <h1 class="encabezado__titulo">Servicios</h1>
-        <p class="encabezado__texto">
-            No solo vendemos equipo. Lo instalamos, lo reparamos en nuestro
-            laboratorio y capacitamos a quien lo opera.
-        </p>
-    </div>
-</section>
+<section class="servicios" aria-labelledby="servicios-titulo">
 
-<!-- ══ Tarjetas apiladas ══
-     Cada tarjeta es sticky y recibe su índice en --i: con él el CSS calcula
-     el top escalonado y el z-index. No hay JavaScript de scroll. -->
-<section class="servicios" aria-label="Nuestros servicios">
-    <div class="servicios__pila">
+    <h1 id="servicios-titulo" class="servicios__titulo">No solo lo vendemos</h1>
 
-        @for (servicio of servicios; track servicio.id) {
-        <article class="servicios__tarjeta" [id]="servicio.id" [style.--i]="$index">
+    <!-- ══ Retícula bento: el tipo de tarjeta lo decide la clase ══ -->
+    <div class="bento__reticula">
+        @for (servicio of servicios; track servicio.clave) {
+        <article [id]="servicio.clave"
+            class="servicio servicio--{{ servicio.tipo }} servicio--{{ servicio.clave }}">
 
-            <div class="servicios__cuerpo">
-                <p class="servicios__etiqueta">{{ servicio.etiqueta }}</p>
-                <h2 class="servicios__titulo">{{ servicio.titulo }}</h2>
-                <p class="servicios__texto">{{ servicio.texto }}</p>
+            <!-- El contenedor fija el tamaño; la imagen solo lo rellena -->
+            <div class="servicio__media">
+                <img class="servicio__imagen" [src]="servicio.imagen" [alt]="servicio.alt"
+                    width="1200" height="800" loading="lazy" decoding="async">
             </div>
 
-            <!-- La primera imagen queda a la vista al cargar: va sin lazy -->
-            <img class="servicios__imagen" [src]="servicio.imagen" [alt]="servicio.alt" width="1200" height="1200"
-                [attr.loading]="$first ? null : 'lazy'">
+            @if (servicio.tipo === 'foto') {
+            <div class="servicio__velo" aria-hidden="true"></div>
+            }
+
+            <div class="servicio__cuerpo">
+                <p class="servicio__etiqueta">{{ servicio.etiqueta }}</p>
+                <h2 class="servicio__titulo">{{ servicio.titulo }}</h2>
+                <p class="servicio__texto">{{ servicio.texto }}</p>
+            </div>
 
         </article>
         }
-
     </div>
+
 </section>
