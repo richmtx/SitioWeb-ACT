@@ -12,10 +12,11 @@
     margin: 0 0 clamp(32px, 4vw, 48px);
     padding: 0 24px;
     text-align: center;
-    font-size: clamp(34px, 5vw, 56px);
+    font-size: clamp(28px, 3.6vw, 42px);
     line-height: 1.05;
     letter-spacing: -0.025em;
     text-wrap: balance;
+    color: var(--act-negro);
 }
 
 /* ═══ Retícula ═══ */
@@ -99,9 +100,11 @@
 /* ═══ Tipo A — vertical: imagen arriba (~60 %), texto abajo ═══ */
 .servicio--vertical { flex-direction: column; }
 
+/* A sangre arriba y a los lados; arriba sigue el radio de la tarjeta, abajo 16px */
 .servicio--vertical .servicio__media {
     flex: 1 1 60%;
     min-height: 180px;
+    border-radius: 20px 20px 16px 16px;
 }
 
 /* ═══ Tipo B — horizontal: texto 55 %, imagen 45 % ═══ */
