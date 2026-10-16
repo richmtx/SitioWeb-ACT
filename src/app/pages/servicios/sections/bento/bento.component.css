@@ -1,0 +1,233 @@
+/* El host es inline por defecto: block conserva altos y anchos */
+:host {
+    display: block;
+}
+
+/* ═══ Sección: un solo fondo de corrido, del título a la última tarjeta ═══ */
+.servicios {
+    /* Blanco: así las tarjetas con --act-fondo conservan su forma */
+    background: var(--act-superficie);
+    /* 88 / 96px en escritorio, 56 / 64px en móvil */
+    padding: clamp(56px, 7vw, 88px) 0 clamp(64px, 7.5vw, 96px);
+}
+
+/* ═══ Encabezado ═══ */
+.servicios__titulo {
+    /* 48px hasta la retícula en escritorio, 32px en móvil */
+    margin: 0 0 clamp(32px, 4vw, 48px);
+    padding: 0 24px;
+    text-align: center;
+    font-size: clamp(28px, 3.6vw, 42px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+/* ═══ Retícula ═══ */
+.bento__reticula {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    /* 290px de base; la fila crece si el texto lo necesita, nunca lo corta */
+    grid-auto-rows: minmax(290px, auto);
+    gap: 20px;
+}
+
+.servicio--integracion { grid-column: 5 / 13; grid-row: 1 / 2; }
+.servicio--instalacion { grid-column: 1 / 5; grid-row: 1 / 3; }
+.servicio--mantenimiento { grid-column: 9 / 13; grid-row: 2 / 4; }
+.servicio--soporte { grid-column: 5 / 9; grid-row: 2 / 3; }
+.servicio--asesoria { grid-column: 1 / 6; grid-row: 3 / 4; }
+.servicio--capacitacion { grid-column: 6 / 9; grid-row: 3 / 4; }
+
+/* ── Base común ── */
+.servicio {
+    position: relative;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--act-fondo);
+    scroll-margin-top: calc(var(--act-nav-alto) + 16px);
+}
+
+/* La imagen va absoluta dentro de su contenedor: no infla la fila */
+.servicio__media {
+    position: relative;
+    overflow: hidden;
+}
+
+.servicio__imagen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.servicio__cuerpo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+}
+
+.servicio__etiqueta {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--act-enlace);
+}
+
+.servicio__titulo {
+    /* peso, interlineado y tracking vienen de styles.css */
+    font-size: clamp(21px, 1.9vw, 26px);
+}
+
+.servicio__texto {
+    margin: 0;
+    font-size: 16px;
+    color: var(--act-carbon);
+}
+
+.servicio--instalacion { background: var(--act-marino-050); }
+
+.servicio--mantenimiento {
+    background: var(--act-superficie);
+    border: 1px solid var(--act-borde);
+}
+
+/* ═══ Tipo A — vertical: imagen arriba (~60 %), texto abajo ═══ */
+.servicio--vertical { flex-direction: column; }
+
+/* A sangre arriba y a los lados; arriba sigue el radio de la tarjeta, abajo 16px */
+.servicio--vertical .servicio__media {
+    flex: 1 1 60%;
+    min-height: 180px;
+    border-radius: 20px 20px 16px 16px;
+}
+
+/* ═══ Tipo B — horizontal: texto 55 %, imagen 45 % ═══ */
+.servicio--horizontal {
+    display: grid;
+    grid-template-columns: 11fr 9fr;
+    gap: 8px;
+    padding: 24px;
+}
+
+.servicio--horizontal .servicio__cuerpo {
+    order: -1;
+    justify-content: center;
+    padding: 8px 16px 8px 8px;
+}
+
+.servicio--horizontal .servicio__media { border-radius: 14px; }
+
+/* ═══ Tipo C — foto a sangre con velo ═══ */
+.servicio--foto {
+    flex-direction: column;
+    justify-content: flex-end;
+    background: var(--act-marino);
+}
+
+.servicio--foto .servicio__media { position: absolute; inset: 0; }
+
+.servicio__velo {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5, 8, 51, 0.88), rgba(5, 8, 51, 0.10));
+}
+
+/* Respaldo bajo el texto: la parte alta del velo (0.10) no garantiza
+   contraste sobre una foto clara. Aquí el fondo nunca baja de 0.88:
+   blanco ≥ 12:1 y ámbar ≥ 8.5:1 aun con la foto en blanco puro. */
+.servicio--foto .servicio__cuerpo {
+    padding: 48px 28px 28px;
+    background: linear-gradient(to top, rgba(5, 8, 51, 0.88) calc(100% - 40px), rgba(5, 8, 51, 0));
+}
+
+.servicio--foto .servicio__etiqueta { color: var(--act-ambar); }
+
+.servicio--foto .servicio__titulo,
+.servicio--foto .servicio__texto { color: #FFFFFF; }
+
+/* ═══ Tipo D — horizontal invertida: imagen cuadrada a la izquierda ═══ */
+.servicio--invertida {
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+}
+
+.servicio--invertida .servicio__media {
+    flex: 0 0 clamp(132px, 14vw, 180px);
+    aspect-ratio: 1;
+    border-radius: 14px;
+}
+
+.servicio--invertida .servicio__cuerpo { padding: 0; }
+
+/* ═══ Responsivo ═══ */
+
+/* Tableta: 6 columnas, 4 filas. Dos bloques espejo de 6×2 celdas:
+   arriba la alta a la izquierda, abajo la alta a la derecha. */
+@media (max-width: 1023px) {
+    .bento__reticula { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+    .servicio--instalacion { grid-column: 1 / 4; grid-row: 1 / 3; }
+    .servicio--integracion { grid-column: 4 / 7; grid-row: 1 / 2; }
+    .servicio--soporte { grid-column: 4 / 7; grid-row: 2 / 3; }
+    .servicio--asesoria { grid-column: 1 / 4; grid-row: 3 / 4; }
+    .servicio--mantenimiento { grid-column: 4 / 7; grid-row: 3 / 5; }
+    .servicio--capacitacion { grid-column: 1 / 4; grid-row: 4 / 5; }
+
+    /* En media retícula B y D no caben a lo ancho: imagen arriba */
+    .servicio--horizontal,
+    .servicio--invertida {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
+    }
+
+    .servicio--horizontal .servicio__media,
+    .servicio--invertida .servicio__media {
+        flex: 0 0 auto;
+        height: 160px;
+        border-radius: 0;
+    }
+
+    .servicio--horizontal .servicio__cuerpo,
+    .servicio--invertida .servicio__cuerpo {
+        order: 0;
+        padding: 24px;
+    }
+}
+
+/* Móvil: una columna en el orden del HTML, alto automático */
+@media (max-width: 767px) {
+    .bento__reticula {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: auto;
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    .bento__reticula > .servicio { grid-column: auto; grid-row: auto; }
+
+    .servicio--vertical .servicio__media,
+    .servicio--horizontal .servicio__media,
+    .servicio--invertida .servicio__media {
+        flex: 0 0 auto;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+    }
+
+    .servicio--foto { min-height: 320px; }
+}
