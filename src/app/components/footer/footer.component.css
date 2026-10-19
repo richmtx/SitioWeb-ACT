@@ -1,71 +1,58 @@
-/* ═══ Bloque de cierre ═══ */
-.pie__cierre {
-    background: var(--act-marino);
-    padding: 64px 24px 56px;
+:host {
+    display: block;
 }
 
-.pie__cierre-contenido {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.pie__cierre-titulo {
-    margin: 0 0 12px;
-    font-size: clamp(30px, 4.2vw, 46px);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #FFFFFF;
-    text-wrap: balance;
-}
-
-.pie__cierre-texto {
-    margin: 0;
-    font-size: clamp(15px, 1.5vw, 17px);
-    line-height: 1.55;
-    color: var(--act-marino-texto);
-}
-
-/* ═══ Fondo de barras EBU ═══ */
-.pie__fondo {
-    /* Siete franjas verticales de igual ancho (100 / 7 = 14.2857%).
-     Van como degradado de cortes duros: un solo elemento en vez de
-     siete nodos, porque aquí solo son decoración. */
-    background: linear-gradient(to right,
-            var(--smpte-gris) 0 14.2857%,
-            var(--smpte-amarillo) 14.2857% 28.5714%,
-            var(--smpte-cian) 28.5714% 42.8571%,
-            var(--smpte-verde) 42.8571% 57.1428%,
-            var(--smpte-magenta) 57.1428% 71.4285%,
-            var(--smpte-rojo) 71.4285% 85.7142%,
-            var(--smpte-azul) 85.7142% 100%);
-    padding: 88px clamp(20px, 5vw, 110px) 0;
+.pie {
+    background: var(--act-fondo);
+    padding: 40px 32px 32px;
 }
 
 /* ═══ Tarjeta ═══ */
 .pie__tarjeta {
-    max-width: var(--act-contenedor);
-    margin: 0 auto;
-    background: var(--act-fondo);
-    border-radius: 28px 28px 0 0;
-    padding: 56px clamp(24px, 4vw, 56px) 36px;
+    display: flex;
+    flex-direction: column;
+    background: var(--act-marino);
+    border-radius: 24px;
+    padding: 48px;
+    box-sizing: border-box;
 }
 
-/* ═══ Columnas ═══ */
-.pie__columnas {
+/* ═══ Fila superior ═══ */
+.pie__superior {
+    display: flex;
+    gap: 72px;
+}
+
+.pie__barras {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 130px;
+    align-self: flex-start;
+    border-radius: 16px;
+    overflow: hidden;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 40px 32px;
+    grid-template-columns: repeat(7, 1fr);
 }
 
-.pie__columna-titulo {
-    margin: 0 0 18px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--act-pizarra);
+.pie__barras > :nth-child(1) { background: var(--smpte-gris); }
+.pie__barras > :nth-child(2) { background: var(--smpte-amarillo); }
+.pie__barras > :nth-child(3) { background: var(--smpte-cian); }
+.pie__barras > :nth-child(4) { background: var(--smpte-verde); }
+.pie__barras > :nth-child(5) { background: var(--smpte-magenta); }
+.pie__barras > :nth-child(6) { background: var(--smpte-rojo); }
+.pie__barras > :nth-child(7) { background: var(--smpte-azul); }
+
+.pie__columnas {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 56px;
+}
+
+.pie__titulo {
+    margin: 0 0 22px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--act-superficie);
 }
 
 .pie__lista {
@@ -74,135 +61,118 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    gap: 14px;
 }
 
 .pie__enlace {
-    color: var(--act-carbon);
+    font-size: 15px;
+    line-height: 1;
+    color: var(--act-marino-texto-suave);
     text-decoration: none;
-    font-size: 14.5px;
-    line-height: 1.45;
     transition: color 0.15s ease;
+}
+
+/* Amplía el área táctil sin mover el layout (7px = medio gap) */
+.pie__lista .pie__enlace {
+    display: inline-block;
+    padding-block: 7px;
+    margin-block: -7px;
 }
 
 .pie__enlace:hover,
 .pie__enlace:focus-visible {
-    color: var(--act-enlace);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--act-superficie);
 }
 
-/* ═══ Columna de contacto ═══ */
-.pie__datos {
-    font-style: normal;
-    /* <address> viene en cursiva por defecto */
+.pie__enlace:focus-visible {
+    outline: 2px solid var(--act-superficie);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ═══ Fila inferior ═══ */
+.pie__inferior {
+    margin-top: 56px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.pie__dato {
-    margin: 0;
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--act-carbon);
-}
-
-.pie__dato--apagado {
-    color: var(--act-gris);
-}
-
-/* ═══ Base ═══ */
-.pie__base {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 20px;
-    margin-top: 48px;
-    padding-top: 28px;
-    border-top: 1px solid var(--act-borde);
+    gap: 48px;
 }
 
 .pie__marca {
-    font-size: 34px;
+    font-size: 52px;
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
     line-height: 1;
-    color: var(--act-marino);
+    color: var(--act-superficie);
+}
+
+.pie__datos {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    text-align: right;
+}
+
+.pie__dato,
+.pie__legal {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--act-marino-texto-suave);
+}
+
+.pie__dato .pie__enlace {
+    font-size: inherit;
+    line-height: inherit;
 }
 
 .pie__legal {
-    margin: 0;
-    flex: 1 1 320px;
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: var(--act-gris);
-    text-align: center;
-}
-
-.pie__mapa {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 18px;
-    border: 1px solid var(--act-borde);
-    border-radius: 8px;
-    background: var(--act-superficie);
-    color: var(--act-pizarra);
+    margin-top: 7px;
     font-size: 13.5px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: border-color 0.15s ease;
-}
-
-.pie__mapa:hover,
-.pie__mapa:focus-visible {
-    border-color: var(--act-enlace);
+    color: var(--act-marino-texto-tenue);
 }
 
 /* ═══ Responsivo ═══ */
 @media (max-width: 1023px) {
-    .pie__columnas {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .pie__superior {
+        flex-direction: column;
+        gap: 48px;
     }
 
-    .pie__fondo {
-        padding-top: 64px;
+    .pie__barras {
+        flex: none;
+        align-self: stretch;
+        height: 90px;
+    }
+
+    .pie__columna {
+        flex: 1 1 0;
     }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 639px) {
+    .pie__tarjeta {
+        padding: 32px 24px;
+    }
+
     .pie__columnas {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .pie__marca {
+        font-size: 40px;
+    }
+
+    .pie__inferior {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 32px;
     }
 
-    .pie__fondo {
-        padding: 48px 16px 0;
-    }
-
-    .pie__tarjeta {
-        border-radius: 20px 20px 0 0;
-        padding: 40px 22px 28px;
-    }
-
-    .pie__cierre {
-        padding: 48px 24px 44px;
-    }
-
-    .pie__base {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .pie__legal {
+    .pie__datos {
         text-align: left;
     }
-}
-
-/* ═══ Accesibilidad ═══ */
-.pie a:focus-visible {
-    outline: 2px solid var(--act-enlace);
-    outline-offset: 3px;
 }

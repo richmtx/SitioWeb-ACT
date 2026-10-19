@@ -4,6 +4,7 @@
     --act-marino-900: #0D1250;   /* barra de utilidad: ahora más clara, no más oscura */
     --act-marino-texto: #E9ECF7;
     --act-marino-texto-suave: #AEB6D8;
+    --act-marino-texto-tenue: #7F89B4;   /* línea legal del pie; 5.6:1 sobre marino */
     --act-enlace: #2B4BB8;       /* enlaces en texto: el marino solo sería ilegible */
 
     /* Acción */
