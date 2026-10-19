@@ -9,6 +9,7 @@
     /* Acción */
     --act-ambar: #FCBA28;
     --act-ambar-600: #E2A415;
+    --act-ambar-texto: #8A6D10;   /* ámbar legible como TEXTO sobre fondo claro */
 
     /* Neutros */
     --act-negro: #000000;

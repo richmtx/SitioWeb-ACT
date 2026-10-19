@@ -1,0 +1,132 @@
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+.cobertura {
+    /* Mismo fondo que llave en mano: las dos se leen como una sola franja */
+    background: var(--act-fondo);
+    padding: 72px 0;
+}
+
+.cobertura__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+/* ═══ Columna de título ═══ */
+.cobertura__texto {
+    flex: 0 0 340px;
+    padding-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cobertura__titulo {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+.cobertura__parrafo {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Lista ═══ */
+.puntos {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    /* La numeración la dibuja .punto__numero */
+    list-style: none;
+}
+
+.punto {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+}
+
+.punto__numero {
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    /* Los cuatro números ocupan el mismo ancho */
+    font-variant-numeric: tabular-nums;
+    color: var(--act-ambar-texto);
+}
+
+.punto__cuerpo {
+    min-width: 0;
+}
+
+.punto__titulo {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--act-negro);
+}
+
+.punto__texto {
+    margin: 7px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Divisorias ═══ */
+/* Solo entre puntos: ni línea al principio ni al final de la lista */
+.punto {
+    padding: 26px 0;
+    /* Sobre --act-fondo, un gris más tenue que --act-borde desaparece */
+    border-top: 1px solid var(--act-borde);
+}
+
+.punto:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.punto:last-child {
+    padding-bottom: 0;
+}
+
+/* ═══ Responsivo ═══ */
+
+/* Una columna: título y párrafo arriba, la lista abajo a todo el ancho */
+@media (max-width: 899px) {
+    .cobertura__contenedor {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .cobertura__texto,
+    .puntos {
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 599px) {
+    .cobertura { padding: 56px 0; }
+
+    .cobertura__contenedor { padding: 0 24px; }
+
+    .cobertura__titulo { font-size: 30px; }
+
+    .punto { gap: 18px; }
+}

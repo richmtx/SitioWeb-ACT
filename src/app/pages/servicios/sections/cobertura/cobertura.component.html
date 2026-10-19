@@ -1,0 +1,29 @@
+<section class="cobertura" aria-labelledby="cobertura-titulo">
+
+    <div class="cobertura__contenedor">
+
+        <!-- ══ Columna de título ══ -->
+        <div class="cobertura__texto">
+            <h2 id="cobertura-titulo" class="cobertura__titulo">Respaldamos lo que vendemos.</h2>
+            <p class="cobertura__parrafo">
+                Lo que incluye trabajar con nosotros, sin importar dónde esté su estación ni a qué
+                hora falle el equipo.
+            </p>
+        </div>
+
+        <!-- ══ Lista numerada: el número lo dibujamos nosotros ══ -->
+        <ol class="puntos">
+            @for (punto of puntos; track $index) {
+            <li class="punto">
+                <span class="punto__numero">{{ numero($index) }}</span>
+                <div class="punto__cuerpo">
+                    <h3 class="punto__titulo">{{ punto.titulo }}</h3>
+                    <p class="punto__texto">{{ punto.texto }}</p>
+                </div>
+            </li>
+            }
+        </ol>
+
+    </div>
+
+</section>
