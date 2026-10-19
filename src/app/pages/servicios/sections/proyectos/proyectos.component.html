@@ -1,0 +1,51 @@
+<section class="proyectos" aria-labelledby="proyectos-titulo">
+
+    <!-- ══ Encabezado: título a la izquierda, flechas a la derecha ══ -->
+    <div class="proyectos__encabezado">
+        <div class="proyectos__texto">
+            <h2 id="proyectos-titulo" class="proyectos__titulo">Algunos de nuestros proyectos.</h2>
+            <p class="proyectos__parrafo">
+                Instalaciones y entregas de los últimos dos años, publicadas con autorización de
+                cada cliente.
+            </p>
+        </div>
+
+        <div class="proyectos__controles">
+            <button type="button" class="proyectos__boton" aria-label="Proyecto anterior"
+                [disabled]="enInicio()" (click)="desplazar(-1)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M19 12H5" />
+                    <path d="m12 19-7-7 7-7" />
+                </svg>
+            </button>
+            <button type="button" class="proyectos__boton" aria-label="Proyecto siguiente"
+                [disabled]="enFinal()" (click)="desplazar(1)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ══ Carrusel a ancho completo: scroll nativo, funciona sin JS ══ -->
+    <div #carrusel class="proyectos__carrusel" role="region"
+        aria-label="Proyectos realizados, desplazable horizontalmente" tabindex="0"
+        (scroll)="actualizarExtremos()">
+        <ul class="proyectos__lista">
+            @for (proyecto of proyectos; track proyecto.cliente) {
+            <li class="proyecto proyecto--{{ proyecto.clave }}">
+                <h3 class="proyecto__cliente">{{ proyecto.cliente }}</h3>
+                <p class="proyecto__trabajo">{{ proyecto.trabajo }}</p>
+                <div class="proyecto__pie">
+                    <p class="proyecto__lugar">{{ proyecto.lugar }}</p>
+                    <p class="proyecto__anio">{{ proyecto.anio }}</p>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+
+</section>

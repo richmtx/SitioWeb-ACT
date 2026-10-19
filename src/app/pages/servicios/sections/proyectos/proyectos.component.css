@@ -1,0 +1,214 @@
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+.proyectos {
+    background: var(--act-superficie);
+    padding: 64px 0;
+}
+
+/* ═══ Encabezado ═══ */
+.proyectos__encabezado {
+    max-width: var(--act-contenedor);
+    margin: 0 auto 36px;
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+}
+
+.proyectos__titulo {
+    max-width: 15ch;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+.proyectos__parrafo {
+    max-width: 46ch;
+    margin: 10px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Botones ═══ */
+.proyectos__controles {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.proyectos__boton {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--act-borde);
+    border-radius: 10px;
+    background: var(--act-superficie);
+    color: var(--act-negro);
+    cursor: pointer;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.proyectos__boton:hover:not(:disabled) {
+    background: var(--act-fondo);
+    border-color: var(--act-gris);
+}
+
+.proyectos__boton:focus-visible {
+    outline: 2px solid var(--act-enlace);
+    outline-offset: 2px;
+}
+
+/* Deshabilitado de verdad (atributo disabled), no solo visual */
+.proyectos__boton:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* ═══ Carrusel ═══ */
+/* A ancho completo; el padding alinea la primera tarjeta con el encabezado */
+.proyectos__carrusel {
+    --carrusel-margen: max(24px, calc((100% - var(--act-contenedor)) / 2 + 48px));
+    padding-inline: var(--carrusel-margen);
+    /* Sin esto, el snap pegaría la tarjeta al borde de la ventana */
+    scroll-padding-inline: var(--carrusel-margen);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.proyectos__carrusel::-webkit-scrollbar {
+    display: none;
+}
+
+.proyectos__carrusel:focus-visible {
+    outline: 2px solid var(--act-enlace);
+    outline-offset: 4px;
+}
+
+.proyectos__lista {
+    display: flex;
+    gap: 20px;
+    /* El ancho lo marcan las tarjetas: así el padding final también cuenta */
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ═══ Tarjeta ═══ */
+.proyecto {
+    flex: 0 0 372px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 28px;
+    border-radius: 22px;
+    scroll-snap-align: start;
+    background: var(--proyecto-fondo);
+    color: var(--proyecto-tinta);
+}
+
+.proyecto__cliente {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    /* Anula el --act-pizarra global de los encabezados */
+    color: inherit;
+}
+
+.proyecto__trabajo {
+    margin: 20px 0 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--proyecto-tinta-suave);
+}
+
+.proyecto__pie {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px dashed var(--proyecto-linea);
+}
+
+.proyecto__lugar {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.proyecto__anio {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: var(--proyecto-tinta-suave);
+}
+
+/* ═══ Variantes de color ═══ */
+/* Cada clave fija fondo y tinta juntos. Los secundarios son la misma
+   tinta con transparencia: negro al 75 % sobre claro, blanco al 80 % sobre
+   oscuro; la línea punteada, la tinta al 30 %. */
+.proyecto--cian,
+.proyecto--amarillo,
+.proyecto--verde {
+    --proyecto-tinta: var(--act-negro);
+    --proyecto-tinta-suave: rgba(0, 0, 0, 0.75);
+    --proyecto-linea: rgba(0, 0, 0, 0.3);
+}
+
+.proyecto--marino,
+.proyecto--azul,
+.proyecto--rojo {
+    --proyecto-tinta: #FFFFFF;
+    --proyecto-tinta-suave: rgba(255, 255, 255, 0.8);
+    --proyecto-linea: rgba(255, 255, 255, 0.3);
+}
+
+.proyecto--marino { --proyecto-fondo: var(--act-marino); }
+.proyecto--cian { --proyecto-fondo: var(--smpte-cian); }
+.proyecto--amarillo { --proyecto-fondo: var(--smpte-amarillo); }
+.proyecto--azul { --proyecto-fondo: var(--smpte-azul); }
+.proyecto--verde { --proyecto-fondo: var(--smpte-verde); }
+.proyecto--rojo { --proyecto-fondo: var(--smpte-rojo); }
+
+/* ═══ Responsivo ═══ */
+
+@media (max-width: 1023px) {
+    .proyectos__titulo { font-size: 34px; }
+
+    .proyecto { flex-basis: 320px; }
+}
+
+/* Móvil: se desplaza con el dedo, las flechas solo estorban */
+@media (max-width: 767px) {
+    .proyectos { padding: 48px 0; }
+
+    .proyectos__encabezado {
+        margin-bottom: 28px;
+        padding: 0 24px;
+    }
+
+    .proyectos__titulo { font-size: 30px; }
+
+    .proyectos__controles { display: none; }
+
+    .proyectos__carrusel { --carrusel-margen: 24px; }
+
+    /* Asoma la siguiente tarjeta */
+    .proyecto { flex-basis: 84vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .proyectos__carrusel { scroll-behavior: auto; }
+
+    .proyectos__boton { transition: none; }
+}
