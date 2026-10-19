@@ -1,0 +1,33 @@
+<section class="laboratorio" aria-labelledby="laboratorio-titulo">
+
+    <div class="laboratorio__contenedor">
+
+        <!-- ══ Columna de texto ══ -->
+        <div class="laboratorio__texto">
+            <p class="laboratorio__etiqueta">Laboratorio propio</p>
+            <h2 id="laboratorio-titulo" class="laboratorio__titulo">Mande a reparar sin riesgo.</h2>
+            <p class="laboratorio__parrafo">
+                Tenemos laboratorio propio para diagnosticar y reparar equipo de radio, televisión
+                y audio. No se compromete a nada hasta saber qué tiene su equipo y cuánto cuesta
+                arreglarlo.
+            </p>
+        </div>
+
+        <!-- ══ Pasos: la línea va detrás de los círculos ══ -->
+        <div class="laboratorio__recorrido">
+            <div class="laboratorio__linea" aria-hidden="true"></div>
+
+            <ol class="pasos">
+                @for (paso of pasos; track $index) {
+                <li class="paso">
+                    <span class="paso__numero">{{ $index + 1 }}</span>
+                    <h3 class="paso__titulo">{{ paso.titulo }}</h3>
+                    <p class="paso__texto">{{ paso.texto }}</p>
+                </li>
+                }
+            </ol>
+        </div>
+
+    </div>
+
+</section>

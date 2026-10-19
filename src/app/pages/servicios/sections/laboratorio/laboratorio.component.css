@@ -1,0 +1,148 @@
+/* El host es inline por defecto: block conserva el ancho completo de la franja */
+:host {
+    display: block;
+}
+
+/* ═══ Franja ═══ */
+.laboratorio {
+    /* Compartidas por los pasos y la línea, para que siempre coincidan */
+    --lab-circulo: 56px;
+    --lab-gap-pasos: 28px;
+
+    background: var(--act-marino);
+    padding: 64px 0;
+}
+
+.laboratorio__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    align-items: flex-start;
+    gap: 56px;
+}
+
+/* ═══ Columna de texto ═══ */
+.laboratorio__texto {
+    flex: 0 0 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.laboratorio__etiqueta {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--act-ambar);
+}
+
+.laboratorio__titulo {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    color: #FFFFFF;
+}
+
+.laboratorio__parrafo {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--act-marino-texto-suave);
+}
+
+/* ═══ Pasos ═══ */
+.laboratorio__recorrido {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.pasos {
+    margin: 0;
+    padding: 0;
+    /* La numeración la dan los círculos */
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--lab-gap-pasos);
+}
+
+.paso {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.paso__numero {
+    /* Por encima de la línea; su fondo marino la tapa por dentro */
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: var(--lab-circulo);
+    height: var(--lab-circulo);
+    border: 1.5px solid var(--act-ambar);
+    border-radius: 50%;
+    background: var(--act-marino);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--act-ambar);
+}
+
+.paso__titulo {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: #FFFFFF;
+}
+
+.paso__texto {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--act-marino-texto-suave);
+}
+
+/* ═══ Línea conectora ═══ */
+/* Del centro del primer círculo al del tercero. Los círculos van alineados
+   a la izquierda de su columna, así que el tercer centro queda a
+   (una columna − medio círculo) del borde derecho, no a 28px. */
+.laboratorio__linea {
+    position: absolute;
+    top: calc(var(--lab-circulo) / 2);
+    left: calc(var(--lab-circulo) / 2);
+    right: calc((100% - 2 * var(--lab-gap-pasos)) / 3 - var(--lab-circulo) / 2);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+/* ═══ Responsivo ═══ */
+
+/* Tableta: texto arriba, los tres pasos abajo todavía en fila */
+@media (max-width: 1023px) {
+    .laboratorio__contenedor {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .laboratorio__texto { flex: 0 0 auto; }
+}
+
+/* Móvil: pasos apilados; la línea horizontal ya no conecta nada */
+@media (max-width: 767px) {
+    .laboratorio { padding: 48px 0; }
+
+    .laboratorio__contenedor { padding: 0 24px; }
+
+    .pasos { grid-template-columns: minmax(0, 1fr); }
+
+    .laboratorio__linea { display: none; }
+}

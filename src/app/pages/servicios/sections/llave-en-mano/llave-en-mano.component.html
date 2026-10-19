@@ -1,0 +1,42 @@
+<section class="llave" aria-labelledby="llave-titulo">
+
+    <div class="llave__contenedor">
+
+        <!-- ══ Columna de texto ══ -->
+        <div class="llave__texto">
+            <p class="llave__etiqueta">Proyectos llave en mano</p>
+            <h2 id="llave-titulo" class="llave__titulo">Le entregamos la estación funcionando.</h2>
+            <p class="llave__parrafo">
+                Hay quien prefiere no armar su proyecto pieza por pieza. En ese caso nos hacemos
+                cargo de todo: definimos el equipo que necesita, lo suministramos, lo instalamos,
+                lo configuramos y capacitamos a su personal.
+            </p>
+
+            <!-- Lo único comprobable de la sección: separado del párrafo y marcado en ámbar -->
+            <div class="prueba">
+                <p class="prueba__etiqueta">Ya lo hicimos</p>
+                <p class="prueba__linea">Así equipamos el estudio de Canal ITD, en Durango, en 2026.</p>
+            </div>
+        </div>
+
+        <!-- ══ Tarjeta de la lista ══ -->
+        <div class="lista-tarjeta">
+            <p class="lista-tarjeta__etiqueta">Qué armamos completo</p>
+
+            <ul class="sistemas">
+                @for (sistema of sistemas; track sistema) {
+                <li class="sistema">
+                    <svg class="sistema__icono" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 12.5 L9.5 18 L20 6.5" />
+                    </svg>
+                    <span class="sistema__texto">{{ sistema }}</span>
+                </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+
+</section>
