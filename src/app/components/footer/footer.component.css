@@ -100,11 +100,9 @@
 }
 
 .pie__marca {
-    font-size: 52px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--act-superficie);
+    height: 64px;
+    width: auto;
+    display: block;
 }
 
 .pie__datos {
@@ -163,7 +161,7 @@
     }
 
     .pie__marca {
-        font-size: 40px;
+        height: 48px;
     }
 
     .pie__inferior {
