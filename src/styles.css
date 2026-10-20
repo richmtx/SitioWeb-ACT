@@ -21,6 +21,7 @@
     --act-borde: #DDE1E6;
     --act-superficie: #FFFFFF;
     --act-fondo: #F3F4F6;
+    --act-fondo-suave: #F7F8FA;   /* fichas de marca sobre blanco */
 
     /* Tintes claros para fondos de tarjeta */
     --act-marino-050: #EDEFF7;   /* azul muy claro derivado del marino */

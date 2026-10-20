@@ -231,6 +231,24 @@
 }
 
 /* ═══ Responsivo ═══ */
+
+/* Franja justo arriba del hamburguesa: la navegación completa no cabía
+   (desbordaba 23px a 1024 con barra de scroll). Se aprieta el espaciado,
+   nunca la tipografía ni la altura del botón. */
+@media (min-width: 1024px) and (max-width: 1140px) {
+    .nav__menu {
+        gap: 20px;
+    }
+
+    .nav__lista {
+        gap: 18px;
+    }
+
+    .nav__cta {
+        padding: 0 16px;
+    }
+}
+
 @media (max-width: 1023px) {
     .nav__hamburguesa {
         display: flex;

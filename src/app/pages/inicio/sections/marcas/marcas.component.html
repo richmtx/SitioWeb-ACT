@@ -1,0 +1,50 @@
+<section id="marcas" class="marcas" aria-labelledby="marcas-titulo">
+
+    <div class="marcas__fila">
+
+        <!-- ══ Tres columnas de fichas a la izquierda ══ -->
+        @for (columna of columnas.slice(0, 3); track $index) {
+        <ul class="marcas__columna">
+            @for (marca of columna; track marca.nombre) {
+            <ng-container *ngTemplateOutlet="ficha; context: { $implicit: marca }" />
+            }
+        </ul>
+        }
+
+        <!-- ══ Bloque central ══ -->
+        <div class="marcas__centro">
+            <div class="marcas__tarjeta">
+                <img class="marcas__logo-act" src="/img/logo-act.png" alt="ACT" width="572" height="176"
+                    loading="lazy" decoding="async">
+            </div>
+            <h2 id="marcas-titulo" class="marcas__titulo">Trabajamos con las marcas que ya conoce.</h2>
+            <p class="marcas__parrafo">
+                Vendemos, instalamos y damos servicio a su equipo. Si busca una marca que no aparece
+                aquí, pregúntenos.
+            </p>
+        </div>
+
+        <!-- ══ Tres columnas de fichas a la derecha ══ -->
+        @for (columna of columnas.slice(3); track $index) {
+        <ul class="marcas__columna">
+            @for (marca of columna; track marca.nombre) {
+            <ng-container *ngTemplateOutlet="ficha; context: { $implicit: marca }" />
+            }
+        </ul>
+        }
+
+    </div>
+
+</section>
+
+<!-- Con logotipo → <img>; sin logotipo o si no cargó → el nombre en texto -->
+<ng-template #ficha let-marca>
+    <li class="ficha">
+        @if (marca.logo && !fallidas().has(marca.nombre)) {
+        <img #logo class="ficha__logo" [src]="marca.logo" [alt]="marca.nombre" loading="lazy" decoding="async"
+            (error)="marcarFallida(marca.nombre)">
+        } @else {
+        <span class="ficha__nombre">{{ marca.nombre }}</span>
+        }
+    </li>
+</ng-template>

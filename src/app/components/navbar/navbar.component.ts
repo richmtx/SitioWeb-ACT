@@ -18,7 +18,6 @@ export class NavbarComponent {
     { etiqueta: 'Inicio', url: '/' },
     { etiqueta: 'Productos', url: '/productos' },
     { etiqueta: 'Servicios', url: '/servicios' },
-    { etiqueta: 'Marcas', url: '/marcas' },
     { etiqueta: 'Nosotros', url: '/nosotros' },
     { etiqueta: 'Contacto', url: '/contacto' }
   ];

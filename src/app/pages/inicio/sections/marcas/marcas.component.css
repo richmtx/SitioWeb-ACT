@@ -1,0 +1,132 @@
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+.marcas {
+    background: var(--act-superficie);
+    padding: 36px 24px;
+}
+
+/* Sin tope de contenedor: la fila mide 1322px y debe caber completa a 1440 */
+.marcas__fila {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* ═══ Columnas de fichas ═══ */
+/* Encogen solo si no caben (1024–1369px); a 1370px+ miden 130px exactos */
+.marcas__columna {
+    flex: 0 1 130px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Escalonado: es lo que evita que se lea como tabla */
+.marcas__columna:nth-child(1),
+.marcas__columna:nth-child(7) { margin-top: 60px; }
+
+.marcas__columna:nth-child(3),
+.marcas__columna:nth-child(5) { margin-top: 36px; }
+
+.ficha {
+    height: 104px;
+    background: var(--act-fondo-suave);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Alto y ancho limitados: logotipos alargados y cuadrados quedan parejos */
+.ficha__logo {
+    max-height: 40px;
+    max-width: min(100px, calc(100% - 20px));
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.ficha__nombre {
+    padding: 0 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--act-pizarra);
+}
+
+/* ═══ Bloque central ═══ */
+.marcas__centro {
+    flex: 0 1 470px;
+    min-width: 0;
+    margin-top: 96px;
+    text-align: center;
+}
+
+.marcas__tarjeta {
+    height: 184px;
+    background: var(--act-marino);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marcas__logo-act {
+    height: 76px;
+    width: auto;
+}
+
+.marcas__titulo {
+    margin: 34px 0 0;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+.marcas__parrafo {
+    margin: 16px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Responsivo ═══ */
+
+/* Bloque central arriba; las 25 fichas en retícula sin escalonar */
+@media (max-width: 1023px) {
+    .marcas__fila {
+        max-width: 640px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Las columnas desaparecen: sus fichas pasan directo a la retícula */
+    .marcas__columna { display: contents; }
+
+    .marcas__centro {
+        grid-column: 1 / -1;
+        order: -1;
+        margin: 0 0 28px;
+    }
+}
+
+@media (max-width: 639px) {
+    .marcas__fila { grid-template-columns: repeat(2, 1fr); }
+
+    .marcas__tarjeta { height: 140px; }
+
+    .marcas__titulo { font-size: 32px; }
+}
