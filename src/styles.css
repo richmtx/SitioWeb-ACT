@@ -22,6 +22,9 @@
     --act-superficie: #FFFFFF;
     --act-fondo: #F3F4F6;
     --act-fondo-suave: #F7F8FA;   /* fichas de marca sobre blanco */
+    /* Regla de costura: la última sección de cualquier página va en
+       --act-superficie, porque el footer también es blanco. Si termina en
+       --act-fondo, aparece una franja gris justo antes del footer. */
 
     /* Tintes claros para fondos de tarjeta */
     --act-marino-050: #EDEFF7;   /* azul muy claro derivado del marino */
@@ -68,7 +71,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: var(--act-carbon);
-    background: var(--act-fondo);
+    background: var(--act-superficie);
     -webkit-font-smoothing: antialiased;
 }
 
