@@ -59,12 +59,22 @@
     text-wrap: balance;
 }
 
+/* Segunda línea en ámbar: mismo tamaño, peso y tracking que el título */
+.hero__titulo-acento {
+    color: var(--act-ambar);
+}
+
 .hero__texto {
     margin: 0;
     max-width: 48ch;
     font-size: clamp(15px, 1.4vw, 18px);
     line-height: 1.6;
     color: #E4E0DC;
+}
+
+/* La oración de servicios resalta dentro del párrafo */
+.hero__texto strong {
+    font-weight: 700;
 }
 
 /* ═══ Responsivo ═══ */
