@@ -1,7 +1,7 @@
 import { Component, ElementRef, afterNextRender, signal, viewChild } from '@angular/core';
 
 /** Cada clave define fondo y tinta juntos en el CSS (.proyecto--<clave>) */
-type ClaveColor = 'marino' | 'cian' | 'amarillo' | 'azul' | 'verde' | 'rojo';
+type ClaveColor = 'gris' | 'amarillo' | 'cian' | 'verde' | 'magenta' | 'rojo';
 
 interface Proyecto {
   clave: ClaveColor;
@@ -23,35 +23,35 @@ const GAP = 20;
 export class ServiciosProyectosComponent {
   readonly proyectos: Proyecto[] = [
     {
-      clave: 'marino',
+      clave: 'gris',
       cliente: 'Canal 10',
       trabajo: 'Servicio, equipos de transmisión y soporte técnico.',
       lugar: 'Durango',
       anio: 2025
     },
     {
-      clave: 'cian',
+      clave: 'amarillo',
       cliente: 'Canal ITD',
       trabajo: 'Proyecto llave en mano para estudio, soporte y asesoría.',
       lugar: 'Durango',
       anio: 2026
     },
     {
-      clave: 'amarillo',
+      clave: 'cian',
       cliente: 'Asociación Veracruzana de Comunicadores Populares',
       trabajo: 'Venta de equipos para sus cabinas de transmisión.',
       lugar: 'Puebla',
       anio: 2026
     },
     {
-      clave: 'azul',
+      clave: 'verde',
       cliente: 'Grupo Radio Comunicación',
       trabajo: 'Transmisor de audio FM de 1000 watts.',
       lugar: 'Chiapas',
       anio: 2025
     },
     {
-      clave: 'verde',
+      clave: 'magenta',
       cliente: 'Cinco Radio',
       trabajo: 'Refacciones para su transmisor de FM.',
       lugar: 'Puebla',

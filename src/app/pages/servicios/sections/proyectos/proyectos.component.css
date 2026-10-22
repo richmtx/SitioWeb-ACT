@@ -154,31 +154,33 @@
 }
 
 /* ═══ Variantes de color ═══ */
-/* Cada clave fija fondo y tinta juntos. Los secundarios son la misma
-   tinta con transparencia: negro al 75 % sobre claro, blanco al 80 % sobre
-   oscuro; la línea punteada, la tinta al 30 %. */
-.proyecto--cian,
+/* Orden de la barra SMPTE. Cada clave fija fondo y tinta juntos.
+   Fondos claros (gris → verde): tinta muy oscura derivada del fondo, sólida
+   también en párrafo y año; con transparencia el cian y el verde bajan de
+   4.5:1. Fondos oscuros (magenta, rojo): blanco, secundario al 80 %.
+   La línea punteada, la tinta al 30 %. */
+.proyecto--gris,
 .proyecto--amarillo,
+.proyecto--cian,
 .proyecto--verde {
-    --proyecto-tinta: var(--act-negro);
-    --proyecto-tinta-suave: rgba(0, 0, 0, 0.75);
+    --proyecto-tinta-suave: var(--proyecto-tinta);
     --proyecto-linea: rgba(0, 0, 0, 0.3);
 }
 
-.proyecto--marino,
-.proyecto--azul,
+.proyecto--magenta,
 .proyecto--rojo {
     --proyecto-tinta: #FFFFFF;
     --proyecto-tinta-suave: rgba(255, 255, 255, 0.8);
     --proyecto-linea: rgba(255, 255, 255, 0.3);
 }
 
-.proyecto--marino { --proyecto-fondo: var(--act-marino); }
-.proyecto--cian { --proyecto-fondo: var(--smpte-cian); }
-.proyecto--amarillo { --proyecto-fondo: var(--smpte-amarillo); }
-.proyecto--azul { --proyecto-fondo: var(--smpte-azul); }
-.proyecto--verde { --proyecto-fondo: var(--smpte-verde); }
-.proyecto--rojo { --proyecto-fondo: var(--smpte-rojo); }
+/* Contrastes medidos (título / párrafo y año) */
+.proyecto--gris     { --proyecto-fondo: var(--smpte-gris);     --proyecto-tinta: #141414; } /* 7.75 / 7.75 */
+.proyecto--amarillo { --proyecto-fondo: var(--smpte-amarillo); --proyecto-tinta: #1F1703; } /* 7.34 / 7.34 */
+.proyecto--cian     { --proyecto-fondo: var(--smpte-cian);     --proyecto-tinta: #020B0D; } /* 5.54 / 5.54 */
+.proyecto--verde    { --proyecto-fondo: var(--smpte-verde);    --proyecto-tinta: #020D06; } /* 4.95 / 4.95 */
+.proyecto--magenta  { --proyecto-fondo: var(--smpte-magenta); } /* 6.21 / 4.63 */
+.proyecto--rojo     { --proyecto-fondo: var(--smpte-rojo); }    /* 6.76 / 4.88 */
 
 /* ═══ Responsivo ═══ */
 
