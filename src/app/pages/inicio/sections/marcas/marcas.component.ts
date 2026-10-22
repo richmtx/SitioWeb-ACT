@@ -5,7 +5,15 @@ interface Marca {
   nombre: string;
   /** Ruta al logotipo; vacía → se muestra el nombre en texto */
   logo: string;
+  /**
+   * Según la proporción del archivo (ancho ÷ alto); cada una tiene su tope de
+   * ancho y alto para igualar el área visual. Sin forma → topes por defecto.
+   *   ancho ≥ 3.5 · medio 1.8–3.5 · compacto < 1.8
+   */
+  forma?: Forma;
 }
+
+type Forma = 'ancho' | 'medio' | 'compacto';
 
 /** Fichas por columna, de izquierda a derecha. Suman 25. */
 const FICHAS_POR_COLUMNA = [5, 5, 3, 3, 4, 5];
@@ -20,36 +28,36 @@ export class InicioMarcasComponent {
   /** El orden importa: se reparten por columna según FICHAS_POR_COLUMNA */
   readonly marcas: Marca[] = [
     // Columna 1
-    { nombre: 'Andrew', logo: '/img/marcas/andrew.png' },
-    { nombre: 'Arrakis', logo: '/img/marcas/arrakis.png' },
-    { nombre: 'Audio-Technica', logo: '/img/marcas/audio-technica.png' },
-    { nombre: 'Belden', logo: '/img/marcas/belden.png' },
-    { nombre: 'Blackmagic', logo: '/img/marcas/blackmagic.png' },
+    { nombre: 'Andrew', logo: '/img/marcas/andrew.png', forma: 'compacto' },
+    { nombre: 'Arrakis', logo: '/img/marcas/arrakis.png', forma: 'compacto' },
+    { nombre: 'Audio-Technica', logo: '/img/marcas/audio-technica.png', forma: 'compacto' },
+    { nombre: 'Belden', logo: '/img/marcas/belden.png', forma: 'ancho' },
+    { nombre: 'Blackmagic', logo: '/img/marcas/blackmagic.png', forma: 'compacto' },
     // Columna 2
-    { nombre: 'Comrex', logo: '/img/marcas/comrex.png' },
-    { nombre: 'Crown', logo: '/img/marcas/crown.png' },
-    { nombre: 'dbx', logo: '/img/marcas/dbx.png' },
-    { nombre: 'Elenos', logo: '/img/marcas/elenos.png' },
-    { nombre: 'Euro Acoustics', logo: '/img/marcas/euro-acoustics.png' },
+    { nombre: 'Comrex', logo: '/img/marcas/comrex.png', forma: 'compacto' },
+    { nombre: 'Crown', logo: '/img/marcas/crown.png', forma: 'compacto' },
+    { nombre: 'dbx', logo: '/img/marcas/dbx.png', forma: 'compacto' },
+    { nombre: 'Elenos', logo: '/img/marcas/elenos.png', forma: 'compacto' },
+    { nombre: 'Euro Acoustics', logo: '/img/marcas/euro-acoustics.png', forma: 'compacto' },
     // Columna 3
-    { nombre: 'Feelworld', logo: '/img/marcas/feelworld.png' },
-    { nombre: 'Inovonics', logo: '/img/marcas/inovonics.png' },
-    { nombre: 'Jampro', logo: '/img/marcas/jampro.png' },
+    { nombre: 'Feelworld', logo: '/img/marcas/feelworld.png', forma: 'compacto' },
+    { nombre: 'Inovonics', logo: '/img/marcas/inovonics.png', forma: 'medio' },
+    { nombre: 'Jampro', logo: '/img/marcas/jampro.png', forma: 'compacto' },
     // Columna 4
-    { nombre: 'JBL', logo: '/img/marcas/jbl.png' },
-    { nombre: 'JK Audio', logo: '/img/marcas/jk-audio.png' },
-    { nombre: 'Mackie', logo: '/img/marcas/mackie.png' },
+    { nombre: 'JBL', logo: '/img/marcas/jbl.png', forma: 'compacto' },
+    { nombre: 'JK Audio', logo: '/img/marcas/jk-audio.png', forma: 'compacto' },
+    { nombre: 'Mackie', logo: '/img/marcas/mackie.png', forma: 'medio' },
     // Columna 5
-    { nombre: 'Orban', logo: '/img/marcas/orban.png' },
-    { nombre: 'Roland', logo: '/img/marcas/roland.png' },
-    { nombre: 'Samson', logo: '/img/marcas/samson.png' },
-    { nombre: 'Sennheiser', logo: '/img/marcas/sennheiser.png' },
+    { nombre: 'Orban', logo: '/img/marcas/orban.png', forma: 'compacto' },
+    { nombre: 'Roland', logo: '/img/marcas/roland.png', forma: 'compacto' },
+    { nombre: 'Samson', logo: '/img/marcas/samson.png', forma: 'compacto' },
+    { nombre: 'Sennheiser', logo: '/img/marcas/sennheiser.png', forma: 'compacto' },
     // Columna 6
-    { nombre: 'Shure', logo: '/img/marcas/shure.png' },
-    { nombre: 'Sinteck', logo: '/img/marcas/sinteck.png' },
-    { nombre: 'Telycam', logo: '/img/marcas/telycam.png' },
-    { nombre: 'Yamaha', logo: '/img/marcas/yamaha.png' },
-    { nombre: 'Yellowtec', logo: '/img/marcas/yellowtec.png' }
+    { nombre: 'Shure', logo: '/img/marcas/shure.png', forma: 'compacto' },
+    { nombre: 'Sinteck', logo: '/img/marcas/sinteck.png', forma: 'medio' },
+    { nombre: 'Telycam', logo: '/img/marcas/telycam.png', forma: 'compacto' },
+    { nombre: 'Yamaha', logo: '/img/marcas/yamaha.png', forma: 'compacto' },
+    { nombre: 'Yellowtec', logo: '/img/marcas/yellowtec.png', forma: 'compacto' }
   ];
 
   /** Las seis columnas; las tres primeras van a la izquierda del bloque central */

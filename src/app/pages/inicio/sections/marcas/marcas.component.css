@@ -37,8 +37,10 @@
 .marcas__columna:nth-child(3),
 .marcas__columna:nth-child(5) { margin-top: 36px; }
 
+/* 130px de columna − 2×9px de padding = 112px útiles para los logos anchos */
 .ficha {
-    height: 104px;
+    height: 120px;
+    padding: 0 9px;
     background: var(--act-fondo-suave);
     border-radius: 16px;
     display: flex;
@@ -46,17 +48,33 @@
     justify-content: center;
 }
 
-/* Alto y ancho limitados: logotipos alargados y cuadrados quedan parejos */
+/* Topes por defecto (marca sin forma) */
 .ficha__logo {
     max-height: 40px;
-    max-width: min(100px, calc(100% - 20px));
+    max-width: min(100px, 100%);
     width: auto;
     height: auto;
     object-fit: contain;
 }
 
+/* Topes según la proporción del archivo: igualan el área visual.
+   min(…, 100%) respeta la columna cuando encoge (1024–1369px). */
+.ficha__logo--ancho {
+    max-width: min(112px, 100%);
+    max-height: 38px;
+}
+
+.ficha__logo--medio {
+    max-width: min(104px, 100%);
+    max-height: 50px;
+}
+
+.ficha__logo--compacto {
+    max-width: min(76px, 100%);
+    max-height: 62px;
+}
+
 .ficha__nombre {
-    padding: 0 10px;
     font-size: 12.5px;
     font-weight: 600;
     line-height: 1.3;

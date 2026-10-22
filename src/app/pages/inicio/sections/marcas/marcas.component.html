@@ -41,7 +41,7 @@
 <ng-template #ficha let-marca>
     <li class="ficha">
         @if (marca.logo && !fallidas().has(marca.nombre)) {
-        <img #logo class="ficha__logo" [src]="marca.logo" [alt]="marca.nombre" loading="lazy" decoding="async"
+        <img #logo class="ficha__logo" [class]="marca.forma ? 'ficha__logo--' + marca.forma : ''" [src]="marca.logo" [alt]="marca.nombre" loading="lazy" decoding="async"
             (error)="marcarFallida(marca.nombre)">
         } @else {
         <span class="ficha__nombre">{{ marca.nombre }}</span>
