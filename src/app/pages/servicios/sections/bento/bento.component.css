@@ -98,7 +98,7 @@
 .servicio--instalacion { background: var(--act-marino-050); }
 
 .servicio--mantenimiento {
-    background: var(--act-superficie);
+    background: var(--act-marino-050);
     border: 1px solid var(--act-borde);
 }
 
