@@ -7,8 +7,8 @@
                 Más de 35 años en soluciones para radio y televisión.
             </p>
             <ul class="nav__utilidad-lista">
-                <li><a class="nav__utilidad-enlace" href="/soporte">Soporte</a></li>
-                <li><a class="nav__utilidad-enlace" href="/atencion">Atención a clientes</a></li>
+                <li><a class="nav__utilidad-enlace" href="/servicios#soporte">Soporte</a></li>
+                <li><a class="nav__utilidad-enlace" href="/contacto">Atención a clientes</a></li>
                 <li><span class="nav__pais">México</span></li>
             </ul>
         </div>
@@ -47,7 +47,8 @@
                     }
                 </ul>
 
-                <a class="nav__cta" href="/cotizacion" (click)="cerrarMenu()">
+                <a class="nav__cta" href="/cotizacion" [class.nav__cta--activo]="esActivo('/cotizacion')"
+                    [attr.aria-current]="esActivo('/cotizacion') ? 'page' : null" (click)="cerrarMenu()">
                     Solicitar cotización
                 </a>
             </nav>

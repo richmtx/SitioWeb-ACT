@@ -1,0 +1,7 @@
+:host {
+    display: block;
+}
+
+.cotizacion {
+    background: var(--act-superficie);
+}

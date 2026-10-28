@@ -34,7 +34,6 @@
 .nav__utilidad-lista {
     display: flex;
     align-items: center;
-    gap: 0;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -167,7 +166,8 @@
 }
 
 .nav__cta:hover,
-.nav__cta:focus-visible {
+.nav__cta:focus-visible,
+.nav__cta--activo {
     background: var(--act-ambar-600);
 }
 
@@ -197,10 +197,6 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     height: var(--act-barras-alto);
-}
-
-.nav__barra {
-    display: block;
 }
 
 .nav__barra--gris {
