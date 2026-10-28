@@ -39,7 +39,8 @@
                 <ul class="nav__lista">
                     @for (enlace of enlaces; track enlace.url) {
                     <li>
-                        <a class="nav__enlace" [href]="enlace.url" (click)="cerrarMenu()">
+                        <a class="nav__enlace" [href]="enlace.url" [class.nav__enlace--activo]="esActivo(enlace.url)"
+                            [attr.aria-current]="esActivo(enlace.url) ? 'page' : null" (click)="cerrarMenu()">
                             {{ enlace.etiqueta }}
                         </a>
                     </li>

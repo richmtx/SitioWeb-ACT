@@ -142,7 +142,8 @@
 }
 
 .nav__enlace:hover,
-.nav__enlace:focus-visible {
+.nav__enlace:focus-visible,
+.nav__enlace--activo {
     color: #FFFFFF;
     border-bottom-color: var(--act-ambar);
 }
@@ -287,6 +288,11 @@
     .nav__enlace:hover,
     .nav__enlace:focus-visible {
         border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* En móvil el borde inferior es el divisor: el activo lleva su barra por dentro */
+    .nav__enlace--activo {
+        box-shadow: inset 0 -3px var(--act-ambar);
     }
 
     .nav__cta {
