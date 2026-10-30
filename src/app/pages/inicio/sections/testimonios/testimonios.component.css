@@ -1,0 +1,207 @@
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+.testimonios {
+    background: var(--act-superficie);
+    padding: 64px 0;
+}
+
+/* ═══ Encabezado ═══ */
+.testimonios__encabezado {
+    max-width: var(--act-contenedor);
+    margin: 0 auto 36px;
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+}
+
+.testimonios__titulo {
+    max-width: 15ch;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+.testimonios__parrafo {
+    max-width: 46ch;
+    margin: 10px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Botones ═══ */
+.testimonios__controles {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.testimonios__boton {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--act-borde);
+    border-radius: 10px;
+    background: var(--act-superficie);
+    color: var(--act-negro);
+    cursor: pointer;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.testimonios__boton:hover:not(:disabled) {
+    background: var(--act-fondo);
+    border-color: var(--act-gris);
+}
+
+.testimonios__boton:focus-visible {
+    outline: 2px solid var(--act-enlace);
+    outline-offset: 2px;
+}
+
+.testimonios__boton:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* ═══ Carrusel ═══ */
+.testimonios__carrusel {
+    --carrusel-margen: max(24px, calc((100% - var(--act-contenedor)) / 2 + 48px));
+    padding-inline: var(--carrusel-margen);
+    scroll-padding-inline: var(--carrusel-margen);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.testimonios__carrusel::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonios__carrusel:focus-visible {
+    outline: 2px solid var(--act-enlace);
+    outline-offset: 4px;
+}
+
+.testimonios__lista {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ═══ Tarjeta ═══ */
+/* El <li> da ancho y snap; el <figure> es la tarjeta visible */
+.testimonio {
+    flex: 0 0 372px;
+    display: flex;
+    scroll-snap-align: start;
+}
+
+/* Tres filas: nombre / cita / pie. El figcaption ocupa las tres con subgrid,
+   así nombre y pie viven en él y la cita queda en medio sin salir del orden */
+.testimonio__figura {
+    flex: 1;
+    min-height: 400px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin: 0;
+    padding: 30px 28px;
+    border-radius: 22px;
+    background: var(--testimonio-fondo);
+    color: var(--testimonio-tinta);
+}
+
+.testimonio__autor {
+    grid-area: 1 / 1 / -1;
+    display: grid;
+    grid-template-rows: subgrid;
+}
+
+.testimonio__nombre {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+}
+
+.testimonio__cita {
+    grid-area: 2 / 1;
+    /* Separación mínima con la línea si la cita es larga */
+    margin: 20px 0 18px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.testimonio__cita p {
+    margin: 0;
+}
+
+.testimonio__pie {
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.3);
+}
+
+.testimonio__empresa {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.testimonio__puesto {
+    font-size: 14px;
+}
+
+/* ═══ Variantes de color ═══ */
+/* Orden de la barra SMPTE, igual que Proyectos. Tinta sólida derivada del
+   fondo; con transparencia el cian y el verde bajan de 4.5:1 */
+.testimonio--gris     { --testimonio-fondo: var(--smpte-gris);     --testimonio-tinta: #141414; } /* 7.75 */
+.testimonio--amarillo { --testimonio-fondo: var(--smpte-amarillo); --testimonio-tinta: #1F1703; } /* 7.34 */
+.testimonio--cian     { --testimonio-fondo: var(--smpte-cian);     --testimonio-tinta: #020B0D; } /* 5.54 */
+.testimonio--verde    { --testimonio-fondo: var(--smpte-verde);    --testimonio-tinta: #020D06; } /* 4.95 */
+
+/* ═══ Responsivo ═══ */
+
+@media (max-width: 1023px) {
+    .testimonios__titulo { font-size: 34px; }
+
+    .testimonio { flex-basis: 320px; }
+}
+
+@media (max-width: 767px) {
+    .testimonios { padding: 48px 0; }
+
+    .testimonios__encabezado {
+        margin-bottom: 28px;
+        padding: 0 24px;
+    }
+
+    .testimonios__titulo { font-size: 30px; }
+
+    .testimonios__controles { display: none; }
+
+    .testimonios__carrusel { --carrusel-margen: 24px; }
+
+    .testimonio { flex-basis: 84vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonios__carrusel { scroll-behavior: auto; }
+
+    .testimonios__boton { transition: none; }
+}

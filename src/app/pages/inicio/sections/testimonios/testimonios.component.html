@@ -1,0 +1,58 @@
+<section class="testimonios" aria-labelledby="testimonios-titulo">
+
+    <!-- ══ Encabezado: título a la izquierda, flechas a la derecha ══ -->
+    <div class="testimonios__encabezado">
+        <div class="testimonios__texto">
+            <h2 id="testimonios-titulo" class="testimonios__titulo">
+                Lo que dicen quienes ya trabajan con nosotros.
+            </h2>
+            <p class="testimonios__parrafo">Testimonios de clientes, publicados con su autorización.</p>
+        </div>
+
+        <div class="testimonios__controles">
+            <button type="button" class="testimonios__boton" aria-label="Testimonio anterior"
+                [disabled]="enInicio()" (click)="desplazar(-1)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M19 12H5" />
+                    <path d="m12 19-7-7 7-7" />
+                </svg>
+            </button>
+            <button type="button" class="testimonios__boton" aria-label="Testimonio siguiente"
+                [disabled]="enFinal()" (click)="desplazar(1)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ══ Carrusel a ancho completo: scroll nativo, funciona sin JS ══ -->
+    <div #carrusel class="testimonios__carrusel" role="region"
+        aria-label="Testimonios de clientes, desplazable horizontalmente" tabindex="0"
+        (scroll)="actualizarExtremos()">
+        <ul class="testimonios__lista">
+            @for (t of testimonios; track t.nombre) {
+            <li class="testimonio testimonio--{{ t.clave }}">
+                <!-- figcaption primero: el lector oye quién habla y luego la cita.
+                     El CSS (subgrid) baja empresa y puesto al pie. -->
+                <figure class="testimonio__figura">
+                    <figcaption class="testimonio__autor">
+                        <span class="testimonio__nombre">{{ t.nombre }}</span>
+                        <span class="testimonio__pie">
+                            <span class="testimonio__empresa">{{ t.empresa }}</span>
+                            <span class="testimonio__puesto">{{ t.puesto }}</span>
+                        </span>
+                    </figcaption>
+                    <blockquote class="testimonio__cita">
+                        <p>“{{ t.cita }}”</p>
+                    </blockquote>
+                </figure>
+            </li>
+            }
+        </ul>
+    </div>
+
+</section>
