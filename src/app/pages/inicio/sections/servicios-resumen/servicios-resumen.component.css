@@ -1,0 +1,119 @@
+:host {
+    display: block;
+}
+
+.resumen {
+    background: var(--act-superficie);
+    padding: 96px 24px;
+}
+
+/* La cámara se ancla a este marco: su borde inferior = el de la tarjeta */
+.resumen__marco {
+    position: relative;
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+}
+
+/* Franja de extremo a extremo del contenedor */
+.resumen__tarjeta {
+    position: relative;
+    z-index: 0;
+    min-height: 300px;
+    padding: 48px clamp(32px, 4vw, 64px);
+    border-radius: 28px;
+    background: var(--act-ambar);
+    display: flex;
+    align-items: center;
+}
+
+/* 46ch a 16px: el texto se queda en la mitad izquierda, fuera de la cámara */
+.resumen__contenido {
+    max-width: 46ch;
+}
+
+.resumen__titulo {
+    font-size: clamp(30px, 3.4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--act-negro);
+}
+
+.resumen__texto {
+    margin: 16px 0 24px;
+    font-size: 16px;
+    /* pizarra 7.15:1 sobre ámbar; gris-fuerte daría 4.39:1 */
+    color: var(--act-pizarra);
+}
+
+.resumen__enlace {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--act-negro);
+    text-decoration: none;
+}
+
+.resumen__flecha {
+    display: inline-block;
+    transition: transform 150ms ease-out;
+}
+
+.resumen__enlace:hover .resumen__flecha,
+.resumen__enlace:focus-visible .resumen__flecha {
+    transform: translateX(4px);
+}
+
+.resumen__enlace:focus-visible {
+    outline: 2px solid var(--act-marino);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* El alto sigue a la tarjeta (+60px): con 300px de tarjeta mide 360px, así
+   que una imagen muy alta se escala y el desborde no pasa de 60px */
+.resumen__camara {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    height: calc(100% + 60px);
+    width: auto;
+    max-width: 46%;
+    object-fit: contain;
+    object-position: right bottom;
+    pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+    .resumen {
+        padding-block: 80px;
+    }
+
+    .resumen__camara {
+        height: calc(72% + 60px);
+        max-width: 36%;
+    }
+}
+
+@media (max-width: 767px) {
+    .resumen {
+        padding: 64px 16px;
+    }
+
+    .resumen__tarjeta {
+        min-height: 0;
+    }
+
+    .resumen__camara {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .resumen__flecha {
+        transition: none;
+    }
+}

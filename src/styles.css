@@ -63,6 +63,8 @@
 
 html {
     -webkit-text-size-adjust: 100%;
+    /* El navbar es sticky: las anclas (/servicios#soporte) no quedan bajo él */
+    scroll-padding-top: var(--act-nav-alto);
 }
 
 body {
