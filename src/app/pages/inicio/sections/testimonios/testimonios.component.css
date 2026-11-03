@@ -5,7 +5,8 @@
 /* ═══ Sección ═══ */
 .testimonios {
     background: var(--act-superficie);
-    padding: 64px 0;
+    /* Arriba corto: se suma al padding inferior de Servicios-resumen */
+    padding: 32px 0 64px;
 }
 
 /* ═══ Encabezado ═══ */
@@ -184,7 +185,7 @@
 }
 
 @media (max-width: 767px) {
-    .testimonios { padding: 48px 0; }
+    .testimonios { padding: 24px 0 48px; }
 
     .testimonios__encabezado {
         margin-bottom: 28px;

@@ -4,7 +4,8 @@
 
 .resumen {
     background: var(--act-superficie);
-    padding: 96px 24px;
+    /* Abajo 64: con los 32 de Testimonios da 96, igual que hero → tarjeta */
+    padding: 96px 24px 64px;
 }
 
 /* La cámara se ancla a este marco: su borde inferior = el de la tarjeta */
@@ -89,7 +90,7 @@
 
 @media (max-width: 1023px) {
     .resumen {
-        padding-block: 80px;
+        padding-block: 80px 48px;
     }
 
     .resumen__camara {
@@ -100,7 +101,7 @@
 
 @media (max-width: 767px) {
     .resumen {
-        padding: 64px 16px;
+        padding: 64px 16px 40px;
     }
 
     .resumen__tarjeta {
