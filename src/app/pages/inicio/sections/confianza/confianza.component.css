@@ -22,7 +22,7 @@
     min-height: 340px;
     padding: 48px clamp(32px, 4vw, 64px);
     border-radius: 28px;
-    background: var(--smpte-rojo);
+    background: var(--smpte-gris);
     display: flex;
     align-items: center;
 }
@@ -32,12 +32,12 @@
     max-width: 48ch;
 }
 
-/* Blanco sobre rojo SMPTE: 6.76:1 */
+/* Negro sobre gris SMPTE (#A8A8A8): 8.83:1 */
 .confianza__titulo {
     font-size: clamp(30px, 3.4vw, 40px);
     font-weight: 700;
     letter-spacing: -0.03em;
-    color: var(--act-superficie);
+    color: var(--act-negro);
 }
 
 .confianza__lista {
@@ -59,14 +59,14 @@
     font-size: 17px;
     font-weight: 700;
     line-height: 1.3;
-    color: var(--act-superficie);
+    color: var(--act-negro);
 }
 
-/* Mezclado sobre el rojo queda #EFDAD8: 5.05:1 */
+/* Pizarra sobre gris SMPTE (#A8A8A8): 5.18:1 */
 .confianza__apoyo {
     font-size: 15px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--act-pizarra);
 }
 
 /* Mismo cálculo que la cámara: tarjeta de 340px → torre de 400px */
