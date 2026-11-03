@@ -1,0 +1,114 @@
+:host {
+    display: block;
+}
+
+.datos {
+    background: var(--act-superficie);
+    padding: 64px 24px 0;
+}
+
+/* overflow: hidden recorta el mapa con las esquinas de la tarjeta */
+.datos__tarjeta {
+    max-width: var(--act-contenedor);
+    min-height: 420px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 45fr 55fr;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+/* Texto var(--act-marino-texto) sobre var(--act-marino): 16.4:1 */
+.datos__info {
+    padding: clamp(32px, 4vw, 56px);
+    background: var(--act-marino);
+    color: var(--act-marino-texto);
+    font-size: 16px;
+    font-style: normal;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+}
+
+.datos__lista {
+    display: grid;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.datos__bloque {
+    display: flex;
+    gap: 16px;
+}
+
+.datos__bloque p {
+    margin: 0;
+}
+
+/* Alineado con la primera línea de texto (25.6px de alto de línea) */
+.datos__icono {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    margin-top: 1px;
+    fill: none;
+    stroke: var(--act-ambar);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.datos__enlace {
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 3px;
+    border-radius: 2px;
+    transition: color 0.2s ease;
+}
+
+.datos__enlace:hover,
+.datos__enlace:focus-visible {
+    color: var(--act-superficie);
+    text-decoration: underline;
+}
+
+/* Ámbar sobre marino (11:1): el foco no se pierde en el fondo oscuro */
+.datos__enlace:focus-visible {
+    outline: 2px solid var(--act-ambar);
+    outline-offset: 3px;
+}
+
+/* Absoluto para que el iframe llene el alto que dicte la columna de datos */
+.datos__mapa {
+    position: relative;
+    background: var(--act-fondo);
+}
+
+.datos__mapa iframe {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(1);
+}
+
+@media (max-width: 899px) {
+    .datos__tarjeta {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .datos__mapa {
+        height: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .datos__enlace {
+        transition: none;
+    }
+}
