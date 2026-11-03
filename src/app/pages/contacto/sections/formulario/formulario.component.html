@@ -1,0 +1,50 @@
+<section class="formulario" aria-labelledby="formulario-titulo">
+  <div class="formulario__marco">
+    <div class="formulario__tarjeta">
+      <div class="formulario__contenido">
+        <h2 id="formulario-titulo" class="formulario__titulo">Envíenos un mensaje.</h2>
+        <p class="formulario__texto">Complete el formulario y con gusto le atenderemos a la brevedad.</p>
+
+        <!-- ngNativeValidate: sin él, FormsModule pone novalidate y `required` no frenaría el envío -->
+        <form class="formulario__form" (ngSubmit)="enviar()" ngNativeValidate>
+          <div class="formulario__fila">
+            <div class="formulario__campo">
+              <label class="formulario__etiqueta" for="contacto-nombre">Nombre <span aria-hidden="true">*</span></label>
+              <input class="formulario__control" id="contacto-nombre" name="nombre" type="text"
+                     autocomplete="name" placeholder="Ej. María López" required>
+            </div>
+            <div class="formulario__campo">
+              <label class="formulario__etiqueta" for="contacto-empresa">Empresa <span aria-hidden="true">*</span></label>
+              <input class="formulario__control" id="contacto-empresa" name="empresa" type="text"
+                     autocomplete="organization" placeholder="Ej. Televisora del Norte" required>
+            </div>
+          </div>
+
+          <div class="formulario__fila">
+            <div class="formulario__campo">
+              <label class="formulario__etiqueta" for="contacto-correo">Correo electrónico <span aria-hidden="true">*</span></label>
+              <input class="formulario__control" id="contacto-correo" name="correo" type="email"
+                     autocomplete="email" placeholder="nombre@empresa.com" required>
+            </div>
+            <div class="formulario__campo">
+              <label class="formulario__etiqueta" for="contacto-telefono">Teléfono <span aria-hidden="true">*</span></label>
+              <input class="formulario__control" id="contacto-telefono" name="telefono" type="tel"
+                     autocomplete="tel" placeholder="Ej. 81 1234 5678" required>
+            </div>
+          </div>
+
+          <div class="formulario__campo">
+            <label class="formulario__etiqueta" for="contacto-mensaje">Mensaje <span aria-hidden="true">*</span></label>
+            <textarea class="formulario__control formulario__control--area" id="contacto-mensaje" name="mensaje"
+                      rows="5" placeholder="Cuéntenos qué equipo o servicio necesita" required></textarea>
+          </div>
+
+          <button class="formulario__boton" type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Decorativa: el formulario ya lo dice todo -->
+    <img class="formulario__antena" src="/img/antena-parabolica.png" width="1086" height="1448" alt="" loading="lazy" decoding="async">
+  </div>
+</section>

@@ -1,0 +1,188 @@
+:host {
+    display: block;
+}
+
+.formulario {
+    background: var(--act-superficie);
+    padding: 96px 24px 64px;
+}
+
+/* La antena se ancla a este marco: su borde inferior = el de la tarjeta */
+.formulario__marco {
+    position: relative;
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+}
+
+.formulario__tarjeta {
+    position: relative;
+    z-index: 0;
+    min-height: 520px;
+    padding: 48px clamp(32px, 4vw, 64px);
+    border-radius: 28px;
+    background: var(--act-marino-050);
+    display: flex;
+    align-items: center;
+}
+
+/* 58%: el formulario necesita ancho; la antena vive en el resto */
+.formulario__contenido {
+    width: 100%;
+    max-width: 58%;
+}
+
+.formulario__titulo {
+    font-size: clamp(30px, 3.4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--act-negro);
+}
+
+.formulario__texto {
+    margin: 12px 0 32px;
+    font-size: 15px;
+    color: var(--act-gris-fuerte);
+}
+
+.formulario__form {
+    display: grid;
+    gap: 20px;
+}
+
+.formulario__fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.formulario__campo {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+.formulario__etiqueta {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--act-pizarra);
+}
+
+.formulario__control {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    /* 16px: por debajo, iOS hace zoom al enfocar */
+    font: inherit;
+    font-size: 16px;
+    color: var(--act-carbon);
+    background: var(--act-superficie);
+    border: 1px solid var(--act-borde);
+    border-radius: 10px;
+    transition: border-color 150ms ease-out;
+}
+
+.formulario__control::placeholder {
+    color: var(--act-gris);
+    opacity: 1;
+}
+
+.formulario__control--area {
+    resize: vertical;
+    min-height: 136px;
+}
+
+/* El ámbar solo da 1.7:1 sobre blanco: el anillo marino es el indicador real */
+.formulario__control:focus-visible {
+    border-color: var(--act-ambar);
+    outline: 2px solid var(--act-marino);
+    outline-offset: 2px;
+}
+
+/* Mismo estilo que .nav__cta */
+.formulario__boton {
+    /* Ancho completo como el textarea; el gap de 20px del grid da la misma
+       separación que entre filas, así que no lleva margin-top propio */
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--act-ambar);
+    color: var(--act-pizarra);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.formulario__boton:hover,
+.formulario__boton:focus-visible {
+    background: var(--act-ambar-600);
+}
+
+.formulario__boton:focus-visible {
+    outline: 2px solid var(--act-marino);
+    outline-offset: 2px;
+}
+
+/* Alto = tarjeta + 60px; el max-width impide que pise el formulario */
+.formulario__antena {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    height: calc(100% + 60px);
+    width: auto;
+    max-width: 40%;
+    object-fit: contain;
+    object-position: right bottom;
+    pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+    .formulario {
+        padding-block: 80px 48px;
+    }
+
+    .formulario__contenido {
+        max-width: 64%;
+    }
+
+    .formulario__fila {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario__antena {
+        height: calc(72% + 60px);
+        max-width: 32%;
+    }
+}
+
+@media (max-width: 767px) {
+    .formulario {
+        padding: 64px 16px 40px;
+    }
+
+    .formulario__tarjeta {
+        min-height: 0;
+    }
+
+    .formulario__contenido {
+        max-width: none;
+    }
+
+    .formulario__antena {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formulario__control,
+    .formulario__boton {
+        transition: none;
+    }
+}
