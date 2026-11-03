@@ -55,6 +55,22 @@
     width: auto;
     height: auto;
     object-fit: contain;
+    /* Gris + opacidad: el gris solo quita el color; la opacidad empareja los logos oscuros */
+    filter: grayscale(1);
+    opacity: 0.72;
+}
+
+/* La ficha recupera su color al pasar el mouse (o con foco, si algún día es enlace) */
+.ficha:hover .ficha__logo,
+.ficha:focus-within .ficha__logo {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .ficha__logo {
+        transition: filter 200ms ease, opacity 200ms ease;
+    }
 }
 
 /* Topes según la proporción del archivo: igualan el área visual.
