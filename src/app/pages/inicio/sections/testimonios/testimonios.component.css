@@ -5,8 +5,8 @@
 /* ═══ Sección ═══ */
 .testimonios {
     background: var(--act-superficie);
-    /* Arriba corto: se suma al padding inferior de Servicios-resumen */
-    padding: 32px 0 64px;
+    /* Corto arriba y abajo: se suma a Servicios-resumen (64) y a Confianza (64) */
+    padding: 32px 0;
 }
 
 /* ═══ Encabezado ═══ */
@@ -181,11 +181,13 @@
 @media (max-width: 1023px) {
     .testimonios__titulo { font-size: 34px; }
 
+    .testimonios { padding-bottom: 16px; }
+
     .testimonio { flex-basis: 320px; }
 }
 
 @media (max-width: 767px) {
-    .testimonios { padding: 24px 0 48px; }
+    .testimonios { padding: 24px 0; }
 
     .testimonios__encabezado {
         margin-bottom: 28px;
