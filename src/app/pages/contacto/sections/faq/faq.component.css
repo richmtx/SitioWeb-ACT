@@ -1,0 +1,121 @@
+:host {
+    display: block;
+}
+
+/* Última sección antes del pie: va en --act-superficie (regla de styles.css) */
+.faq {
+    background: var(--act-superficie);
+    /* Arriba solo 32px: el formulario ya deja 64px debajo de su tarjeta */
+    padding: 32px 24px 96px;
+}
+
+.faq__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+}
+
+/* ═══ Encabezado ═══ */
+.faq__titulo {
+    font-size: clamp(30px, 3.4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--act-negro);
+}
+
+.faq__texto {
+    /* 56px hasta la primera pregunta: este margen se colapsa con el
+       margin-top de .faq__lista (32px) y gana el mayor */
+    margin: 12px 0 56px;
+    font-size: 15px;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Lista ═══ */
+/* Ancho acotado: así el + no queda a un metro de la pregunta en pantallas anchas */
+.faq__lista {
+    max-width: 880px;
+    margin-top: 32px;
+}
+
+/* Divisoria solo entre elementos: ni arriba de la primera ni abajo de la última */
+.faq__item + .faq__item {
+    border-top: 1px solid var(--act-borde);
+}
+
+.faq__resumen {
+    display: block;
+    list-style: none;
+    position: relative;
+    padding: 22px 0;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.faq__resumen::-webkit-details-marker {
+    display: none;
+}
+
+.faq__resumen:focus-visible {
+    outline: 3px solid var(--act-ambar);
+    outline-offset: 4px;
+}
+
+/* El texto va en un span y el + se posiciona aparte: Safari antiguo ignora display:flex en <summary> */
+.faq__pregunta {
+    display: block;
+    padding-right: 48px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--act-negro);
+}
+
+.faq__icono {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -12px;
+    fill: none;
+    stroke: var(--act-negro);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.faq__item[open] .faq__icono {
+    transform: rotate(45deg);
+}
+
+.faq__respuesta {
+    max-width: 70ch;
+    margin: 0;
+    padding-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--act-gris-fuerte);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .faq__icono {
+        transition: transform 200ms ease-out;
+    }
+}
+
+/* ═══ Responsivo ═══ */
+@media (max-width: 767px) {
+    .faq {
+        padding: 24px 16px 64px;
+    }
+
+    .faq__resumen {
+        padding: 18px 0;
+    }
+
+    .faq__pregunta {
+        font-size: 16px;
+    }
+
+    .faq__respuesta {
+        font-size: 15px;
+        padding-bottom: 20px;
+    }
+}

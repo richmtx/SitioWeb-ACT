@@ -1,0 +1,28 @@
+<section class="faq" aria-labelledby="faq-titulo">
+
+    <div class="faq__contenedor">
+
+        <header class="faq__encabezado">
+            <h2 id="faq-titulo" class="faq__titulo">Preguntas frecuentes</h2>
+            <p class="faq__texto">Resolvemos sus dudas más comunes.</p>
+        </header>
+
+        <!-- details/summary nativos: teclado y lector de pantalla sin JS ni estado -->
+        <div class="faq__lista">
+            @for (item of preguntas; track item.pregunta) {
+            <details class="faq__item">
+                <summary class="faq__resumen">
+                    <span class="faq__pregunta">{{ item.pregunta }}</span>
+                    <!-- + que gira 45° y queda como × al abrir -->
+                    <svg class="faq__icono" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p class="faq__respuesta">{{ item.respuesta }}</p>
+            </details>
+            }
+        </div>
+
+    </div>
+
+</section>
