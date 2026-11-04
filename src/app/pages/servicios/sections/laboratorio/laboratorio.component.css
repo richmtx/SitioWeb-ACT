@@ -15,7 +15,8 @@
 .laboratorio__contenedor {
     max-width: var(--act-contenedor);
     margin: 0 auto;
-    padding: 0 48px;
+    /* Mismo padding que .nav__contenedor: la caja arranca en el logo y termina en el botón */
+    padding: 0 24px;
 }
 
 /* ═══ Encabezado ═══ */
@@ -122,8 +123,6 @@
         --lab-padding: 24px;
         padding: 56px 0;
     }
-
-    .laboratorio__contenedor { padding: 0 24px; }
 
     .laboratorio__encabezado { margin-bottom: 32px; }
 
