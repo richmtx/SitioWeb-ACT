@@ -8,8 +8,8 @@
     --dif-padding: 36px;
 
     background: var(--act-superficie);
-    /* Igual que laboratorio de Servicios; ajustar cuando exista "Misión y valores" arriba */
-    padding: 32px 0 72px;
+    /* Arriba 96px: separación con "Misión y visión", que no lleva padding inferior */
+    padding: 96px 0 72px;
 }
 
 .diferencia__contenedor {
@@ -121,7 +121,8 @@
 @media (max-width: 639px) {
     .diferencia {
         --dif-padding: 24px;
-        padding: 56px 0;
+        /* 64px arriba, igual que la separación entre filas de "Misión y visión" */
+        padding: 64px 0 56px;
     }
 
     .diferencia__encabezado { margin-bottom: 32px; }

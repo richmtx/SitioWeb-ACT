@@ -1,0 +1,83 @@
+/* El host es inline por defecto: block conserva el ancho completo de la franja */
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+/* Primera sección de Nosotros: 64px bajo el navbar. Abajo no lleva padding:
+   los 96px hacia "Qué nos diferencia" los pone esa sección */
+.mv {
+    background: var(--act-superficie);
+    padding: 64px 0 0;
+}
+
+.mv__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    /* Mismo padding que .nav__contenedor: el contenido arranca en el logo y termina en el botón */
+    padding: 0 24px;
+    display: grid;
+    gap: 48px;
+}
+
+/* ═══ Fila ═══ */
+.fila {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 80px;
+    align-items: center;
+}
+
+/* ═══ Texto ═══ */
+.fila__etiqueta {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--act-ambar-texto);
+}
+
+.fila__titulo {
+    font-size: 42px;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+.fila__parrafo {
+    max-width: 46ch;
+    margin: 20px 0 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Imagen (marcador) ═══ */
+.fila__imagen {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* Mismo radio que la tarjeta de "Qué nos diferencia" */
+    border-radius: 20px;
+}
+
+.fila__imagen--cian { background: var(--smpte-cian); }
+.fila__imagen--verde { background: var(--smpte-verde); }
+
+/* ═══ Responsivo ═══ */
+@media (max-width: 899px) {
+    .fila {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    /* En una columna la imagen va arriba en ambas filas */
+    .fila--texto-primero .fila__imagen { order: -1; }
+}
+
+@media (max-width: 639px) {
+    .mv__contenedor { gap: 40px; }
+
+    .fila__titulo { font-size: 30px; }
+}
