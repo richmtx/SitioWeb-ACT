@@ -2,25 +2,25 @@
 
     <div class="laboratorio__contenedor">
 
-        <!-- ══ Columna de texto ══ -->
-        <div class="laboratorio__texto">
-            <p class="laboratorio__etiqueta">Laboratorio propio</p>
+        <!-- ══ Encabezado ══ -->
+        <header class="laboratorio__encabezado">
             <h2 id="laboratorio-titulo" class="laboratorio__titulo">Mande a reparar sin riesgo.</h2>
             <p class="laboratorio__parrafo">
                 Tenemos laboratorio propio para diagnosticar y reparar equipo de radio, televisión
                 y audio. No se compromete a nada hasta saber qué tiene su equipo y cuánto cuesta
                 arreglarlo.
             </p>
-        </div>
+        </header>
 
-        <!-- ══ Pasos: la línea va detrás de los círculos ══ -->
-        <div class="laboratorio__recorrido">
-            <div class="laboratorio__linea" aria-hidden="true"></div>
+        <!-- ══ Tarjeta: franja roja + cuerpo blanco ══ -->
+        <div class="tarjeta">
+            <p class="tarjeta__franja">Laboratorio propio</p>
 
-            <ol class="pasos">
+            <ol class="tarjeta__pasos">
                 @for (paso of pasos; track $index) {
                 <li class="paso">
-                    <span class="paso__numero">{{ $index + 1 }}</span>
+                    <!-- La lista ya numera para lectores de pantalla -->
+                    <span class="paso__numero" aria-hidden="true">0{{ $index + 1 }}</span>
                     <h3 class="paso__titulo">{{ paso.titulo }}</h3>
                     <p class="paso__texto">{{ paso.texto }}</p>
                 </li>
