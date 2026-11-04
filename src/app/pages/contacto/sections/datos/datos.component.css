@@ -2,32 +2,41 @@
     display: block;
 }
 
+/* Primera sección: 64 bajo el navbar; la antena sobresale 30 y queda a 34px */
 .datos {
     background: var(--act-superficie);
     padding: 64px 24px 0;
 }
 
-/* overflow: hidden recorta el mapa con las esquinas de la tarjeta */
-.datos__tarjeta {
+/* La antena se ancla a este marco: su borde inferior = el de la tarjeta */
+.datos__marco,
+.datos__mapa {
     max-width: var(--act-contenedor);
-    min-height: 420px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 45fr 55fr;
-    border-radius: 24px;
-    overflow: hidden;
 }
 
-/* Texto var(--act-marino-texto) sobre var(--act-marino): 16.4:1 */
-.datos__info {
-    padding: clamp(32px, 4vw, 56px);
-    background: var(--act-marino);
-    color: var(--act-marino-texto);
+.datos__marco {
+    position: relative;
+}
+
+.datos__tarjeta {
+    position: relative;
+    z-index: 0;
+    min-height: 400px;
+    padding: 48px clamp(32px, 4vw, 64px);
+    border-radius: 24px;
+    background: var(--smpte-azul);
+    display: flex;
+    align-items: center;
+}
+
+/* Blanco sobre azul: 7.8:1; el negro daría 2.7:1 */
+.datos__contenido {
+    max-width: 55%;
+    color: var(--act-superficie);
     font-size: 16px;
     font-style: normal;
     line-height: 1.6;
-    display: flex;
-    align-items: center;
 }
 
 .datos__lista {
@@ -47,14 +56,14 @@
     margin: 0;
 }
 
-/* Alineado con la primera línea de texto (25.6px de alto de línea) */
+/* Blancos como el texto (7.8:1). Alineado con la 1.ª línea */
 .datos__icono {
     flex: none;
     width: 24px;
     height: 24px;
     margin-top: 1px;
     fill: none;
-    stroke: var(--act-ambar);
+    stroke: var(--act-superficie);
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -65,50 +74,83 @@
     text-decoration: none;
     text-underline-offset: 3px;
     border-radius: 2px;
-    transition: color 0.2s ease;
 }
 
 .datos__enlace:hover,
 .datos__enlace:focus-visible {
-    color: var(--act-superficie);
     text-decoration: underline;
 }
 
-/* Ámbar sobre marino (11:1): el foco no se pierde en el fondo oscuro */
+/* Anillo blanco: sobre el azul el marino se perdería */
 .datos__enlace:focus-visible {
-    outline: 2px solid var(--act-ambar);
+    outline: 2px solid var(--act-superficie);
     outline-offset: 3px;
 }
 
-/* Absoluto para que el iframe llene el alto que dicte la columna de datos */
+/* El PNG trae 184 de sus 1275px transparentes arriba: × 1275/1091 hace que
+   la antena visible (no la caja) rebase la tarjeta 30px a cualquier alto.
+   El max-width impide que pise los datos */
+.datos__antena {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    height: calc((100% + 30px) * 1.1687);
+    width: auto;
+    max-width: 40%;
+    object-fit: contain;
+    object-position: right bottom;
+    pointer-events: none;
+}
+
 .datos__mapa {
-    position: relative;
+    height: 400px;
+    margin-top: 24px;
+    border-radius: 24px;
+    overflow: hidden;
     background: var(--act-fondo);
 }
 
 .datos__mapa iframe {
-    position: absolute;
-    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
-    filter: grayscale(1);
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
+    .datos {
+        padding-top: 80px;
+    }
+
+    .datos__contenido {
+        max-width: 64%;
+    }
+
+    .datos__antena {
+        height: calc(72% + 60px);
+        max-width: 32%;
+    }
+}
+
+@media (max-width: 767px) {
+    .datos {
+        padding: 64px 16px 0;
+    }
+
     .datos__tarjeta {
-        grid-template-columns: 1fr;
         min-height: 0;
+    }
+
+    .datos__contenido {
+        max-width: none;
+    }
+
+    .datos__antena {
+        display: none;
     }
 
     .datos__mapa {
         height: 300px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .datos__enlace {
-        transition: none;
     }
 }

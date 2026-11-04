@@ -7,16 +7,9 @@
     padding: 96px 24px 64px;
 }
 
-/* La antena se ancla a este marco: su borde inferior = el de la tarjeta */
-.formulario__marco {
-    position: relative;
+.formulario__tarjeta {
     max-width: var(--act-contenedor);
     margin: 0 auto;
-}
-
-.formulario__tarjeta {
-    position: relative;
-    z-index: 0;
     min-height: 520px;
     padding: 48px clamp(32px, 4vw, 64px);
     border-radius: 28px;
@@ -25,10 +18,8 @@
     align-items: center;
 }
 
-/* 58%: el formulario necesita ancho; la antena vive en el resto */
 .formulario__contenido {
     width: 100%;
-    max-width: 58%;
 }
 
 .formulario__titulo {
@@ -129,36 +120,9 @@
     outline-offset: 2px;
 }
 
-/* Alto = tarjeta + 60px; el max-width impide que pise el formulario */
-.formulario__antena {
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    bottom: 0;
-    height: calc(100% + 60px);
-    width: auto;
-    max-width: 40%;
-    object-fit: contain;
-    object-position: right bottom;
-    pointer-events: none;
-}
-
 @media (max-width: 1023px) {
     .formulario {
         padding-block: 80px 48px;
-    }
-
-    .formulario__contenido {
-        max-width: 64%;
-    }
-
-    .formulario__fila {
-        grid-template-columns: 1fr;
-    }
-
-    .formulario__antena {
-        height: calc(72% + 60px);
-        max-width: 32%;
     }
 }
 
@@ -171,12 +135,8 @@
         min-height: 0;
     }
 
-    .formulario__contenido {
-        max-width: none;
-    }
-
-    .formulario__antena {
-        display: none;
+    .formulario__fila {
+        grid-template-columns: 1fr;
     }
 }
 
