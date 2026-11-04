@@ -32,7 +32,7 @@
     max-width: 48ch;
 }
 
-/* Negro sobre gris SMPTE (#A8A8A8): 8.83:1 */
+/* Negro sobre cian SMPTE (#2E93A8): 5.86:1 */
 .confianza__titulo {
     font-size: clamp(30px, 3.4vw, 40px);
     font-weight: 700;
@@ -62,9 +62,11 @@
     color: var(--act-negro);
 }
 
-/* Pizarra sobre gris SMPTE (#A8A8A8): 5.18:1 */
+/* Negro sobre cian: 5.86:1. Pizarra daba 3.43:1, así que la
+   jerarquía con el dato va por tamaño (15 vs 17) y peso (400 vs 700) */
 .confianza__apoyo {
     font-size: 15px;
+    font-weight: 400;
     line-height: 1.5;
     color: var(--act-pizarra);
 }
