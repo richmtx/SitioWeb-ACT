@@ -11,7 +11,6 @@ interface Punto {
   styleUrl: './cobertura.component.css'
 })
 export class ServiciosCoberturaComponent {
-  /** El orden importa: el número de cada punto sale de su posición */
   readonly puntos: Punto[] = [
     {
       titulo: 'Cobertura nacional e internacional',
@@ -31,9 +30,4 @@ export class ServiciosCoberturaComponent {
       texto: 'Emitimos factura tanto por venta de equipo como por servicio.'
     }
   ];
-
-  /** 0 → "01", 3 → "04" */
-  numero(indice: number): string {
-    return String(indice + 1).padStart(2, '0');
-  }
 }

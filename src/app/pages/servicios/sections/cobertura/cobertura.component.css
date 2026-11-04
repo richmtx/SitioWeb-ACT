@@ -4,32 +4,39 @@
 
 /* ═══ Sección ═══ */
 .cobertura {
-    /* Mismo fondo que llave en mano: las dos se leen como una sola franja */
-    background: var(--act-fondo);
-    padding: 72px 0;
+    background: var(--act-superficie);
+    /* Abajo 52px + 44px de proyectos = 96px hasta su título */
+    padding: 72px 0 52px;
 }
 
 .cobertura__contenedor {
     max-width: var(--act-contenedor);
     margin: 0 auto;
-    padding: 0 48px;
-    display: flex;
-    align-items: flex-start;
-    gap: 80px;
+    /* Mismo padding que .nav__contenedor: la caja arranca en el logo y termina en el botón */
+    padding: 0 24px;
 }
 
-/* ═══ Columna de título ═══ */
-.cobertura__texto {
-    flex: 0 0 340px;
-    padding-top: 4px;
+/* ═══ Caja ═══ */
+.cobertura__caja {
+    background: var(--act-fondo);
+    border-radius: 28px;
+    padding: clamp(32px, 4.5vw, 72px);
+}
+
+/* ═══ Encabezado: título a la izquierda, párrafo a la derecha ═══ */
+.cobertura__encabezado {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px 48px;
+    /* La divisoria: 40px arriba y abajo */
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--act-borde);
 }
 
 .cobertura__titulo {
-    font-size: 42px;
-    font-weight: 700;
+    font-size: clamp(28px, 2.8vw, 34px);
     line-height: 1.07;
     letter-spacing: -0.03em;
     text-wrap: balance;
@@ -37,96 +44,67 @@
 }
 
 .cobertura__parrafo {
+    /* 58ch: tres renglones a 1440px sin pasar el título a dos líneas */
+    flex: 0 1 58ch;
     margin: 0;
     font-size: 16px;
     line-height: 1.65;
     color: var(--act-gris-fuerte);
 }
 
-/* ═══ Lista ═══ */
+/* ═══ Retícula de puntos ═══ */
 .puntos {
-    flex: 1 1 auto;
-    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
     margin: 0;
     padding: 0;
-    /* La numeración la dibuja .punto__numero */
     list-style: none;
 }
 
-.punto {
-    display: flex;
-    align-items: baseline;
-    gap: 28px;
-}
-
-.punto__numero {
-    flex: 0 0 auto;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    /* Los cuatro números ocupan el mismo ancho */
-    font-variant-numeric: tabular-nums;
-    color: var(--act-ambar-texto);
-}
-
-.punto__cuerpo {
-    min-width: 0;
-}
-
 .punto__titulo {
-    font-size: 23px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: 19px;
+    letter-spacing: -0.015em;
     line-height: 1.25;
     color: var(--act-negro);
 }
 
 .punto__texto {
-    margin: 7px 0 0;
+    margin: 8px 0 0;
     font-size: 15px;
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--act-gris-fuerte);
 }
 
-/* ═══ Divisorias ═══ */
-/* Solo entre puntos: ni línea al principio ni al final de la lista */
-.punto {
-    padding: 26px 0;
-    /* Sobre --act-fondo, un gris más tenue que --act-borde desaparece */
-    border-top: 1px solid var(--act-borde);
-}
-
-.punto:first-child {
-    padding-top: 0;
-    border-top: 0;
-}
-
-.punto:last-child {
-    padding-bottom: 0;
-}
-
 /* ═══ Responsivo ═══ */
-
-/* Una columna: título y párrafo arriba, la lista abajo a todo el ancho */
-@media (max-width: 899px) {
-    .cobertura__contenedor {
+@media (max-width: 1023px) {
+    .cobertura__encabezado {
         flex-direction: column;
-        align-items: stretch;
-        gap: 40px;
     }
 
-    .cobertura__texto,
+    .cobertura__parrafo {
+        flex: none;
+        max-width: 44ch;
+    }
+
     .puntos {
-        flex: 0 0 auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px 40px;
     }
 }
 
-@media (max-width: 599px) {
-    .cobertura { padding: 56px 0; }
+@media (max-width: 639px) {
+    .cobertura { padding: 56px 0 40px; }
 
-    .cobertura__contenedor { padding: 0 24px; }
+    .cobertura__caja { padding: 28px; }
 
-    .cobertura__titulo { font-size: 30px; }
+    .cobertura__encabezado {
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+    }
 
-    .punto { gap: 18px; }
+    .puntos {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
 }

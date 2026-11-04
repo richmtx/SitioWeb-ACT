@@ -5,7 +5,8 @@
 /* ═══ Sección ═══ */
 .proyectos {
     background: var(--act-superficie);
-    padding: 64px 0;
+    /* Arriba 44px + 52px de cobertura = 96px desde la caja gris */
+    padding: 44px 0 64px;
 }
 
 /* ═══ Encabezado ═══ */
@@ -192,7 +193,7 @@
 
 /* Móvil: se desplaza con el dedo, las flechas solo estorban */
 @media (max-width: 767px) {
-    .proyectos { padding: 48px 0; }
+    .proyectos { padding: 32px 0 48px; }
 
     .proyectos__encabezado {
         margin-bottom: 28px;
