@@ -8,8 +8,9 @@
     --dif-padding: 36px;
 
     background: var(--act-superficie);
-    /* Arriba 96px: separación con "Misión y visión", que no lleva padding inferior */
-    padding: 96px 0 72px;
+    /* Arriba 96px: "Misión y visión" no lleva padding inferior.
+       Abajo 56px + 40px del pie = 96px hasta la tarjeta marino */
+    padding: 96px 0 56px;
 }
 
 .diferencia__contenedor {
@@ -40,12 +41,12 @@
     color: var(--act-gris-fuerte);
 }
 
-/* ═══ Tarjeta ═══ */
-/* El rojo solo se ve como franja arriba: el cuerpo ocupa todo el ancho y llega hasta abajo */
+/* ═══ Tarjetas ═══ */
+/* El color solo se ve como franja arriba: el cuerpo ocupa todo el ancho y llega hasta abajo */
 .tarjeta {
-    padding: 0;
     border-radius: 20px;
     background: var(--smpte-rojo);
+    color: var(--act-superficie);
     box-shadow: 0 8px 20px -12px color-mix(in srgb, var(--act-marino) 16%, transparent);
 }
 
@@ -56,10 +57,18 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--act-superficie);
+    color: inherit;
+}
+
+.tarjeta + .tarjeta { margin-top: 32px; }
+
+/* Franja en ámbar (como el botón de cotización): el marino da 11.2:1 */
+.tarjeta--valores {
+    background: var(--act-ambar);
+    color: var(--act-marino);
 }
 
 .tarjeta__puntos {
@@ -121,8 +130,8 @@
 @media (max-width: 639px) {
     .diferencia {
         --dif-padding: 24px;
-        /* 64px arriba, igual que la separación entre filas de "Misión y visión" */
-        padding: 64px 0 56px;
+        /* 64px arriba, igual que entre filas de "Misión y visión"; abajo 24px + 40px del pie */
+        padding: 64px 0 24px;
     }
 
     .diferencia__encabezado { margin-bottom: 32px; }

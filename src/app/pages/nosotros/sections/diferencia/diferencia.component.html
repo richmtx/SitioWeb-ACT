@@ -2,30 +2,33 @@
 
     <div class="diferencia__contenedor">
 
-        <!-- ══ Encabezado ══ -->
+        <!-- ══ Encabezado: cubre las dos tarjetas ══ -->
         <header class="diferencia__encabezado">
-            <h2 id="diferencia-titulo" class="diferencia__titulo">Lo que nos piden que no siempre encuentran.</h2>
+            <h2 id="diferencia-titulo" class="diferencia__titulo">Cómo trabajamos.</h2>
             <p class="diferencia__parrafo">
-                Vendemos el mismo equipo que otros. La diferencia está en lo que pasa antes de la
-                compra y después de ella.
+                Lo que nos exigimos a nosotros mismos y lo que nos piden los clientes que no
+                siempre encuentran.
             </p>
         </header>
 
-        <!-- ══ Tarjeta: franja roja + cuerpo claro ══ -->
-        <div class="tarjeta">
-            <p class="tarjeta__franja">Qué nos diferencia</p>
+        <!-- ══ Tarjetas: franja de color + cuerpo claro ══ -->
+        @for (tarjeta of tarjetas; track tarjeta.clave) {
+        <div class="tarjeta tarjeta--{{ tarjeta.clave }}">
+            <!-- La etiqueta de la franja es el encabezado de la tarjeta -->
+            <h3 class="tarjeta__franja" [id]="'tarjeta-' + tarjeta.clave">{{ tarjeta.etiqueta }}</h3>
 
-            <ol class="tarjeta__puntos">
-                @for (punto of puntos; track $index) {
+            <ol class="tarjeta__puntos" [attr.aria-labelledby]="'tarjeta-' + tarjeta.clave">
+                @for (punto of tarjeta.puntos; track $index) {
                 <li class="punto">
                     <!-- La lista ya numera para lectores de pantalla -->
                     <span class="punto__numero" aria-hidden="true">0{{ $index + 1 }}</span>
-                    <h3 class="punto__titulo">{{ punto.titulo }}</h3>
+                    <h4 class="punto__titulo">{{ punto.titulo }}</h4>
                     <p class="punto__texto">{{ punto.texto }}</p>
                 </li>
                 }
             </ol>
         </div>
+        }
 
     </div>
 
