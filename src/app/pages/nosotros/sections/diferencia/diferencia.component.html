@@ -1,0 +1,32 @@
+<section class="diferencia" aria-labelledby="diferencia-titulo">
+
+    <div class="diferencia__contenedor">
+
+        <!-- ══ Encabezado ══ -->
+        <header class="diferencia__encabezado">
+            <h2 id="diferencia-titulo" class="diferencia__titulo">Lo que nos piden que no siempre encuentran.</h2>
+            <p class="diferencia__parrafo">
+                Vendemos el mismo equipo que otros. La diferencia está en lo que pasa antes de la
+                compra y después de ella.
+            </p>
+        </header>
+
+        <!-- ══ Tarjeta: franja roja + cuerpo claro ══ -->
+        <div class="tarjeta">
+            <p class="tarjeta__franja">Qué nos diferencia</p>
+
+            <ol class="tarjeta__puntos">
+                @for (punto of puntos; track $index) {
+                <li class="punto">
+                    <!-- La lista ya numera para lectores de pantalla -->
+                    <span class="punto__numero" aria-hidden="true">0{{ $index + 1 }}</span>
+                    <h3 class="punto__titulo">{{ punto.titulo }}</h3>
+                    <p class="punto__texto">{{ punto.texto }}</p>
+                </li>
+                }
+            </ol>
+        </div>
+
+    </div>
+
+</section>

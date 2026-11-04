@@ -1,0 +1,130 @@
+/* El host es inline por defecto: block conserva el ancho completo de la franja */
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+.diferencia {
+    --dif-padding: 36px;
+
+    background: var(--act-superficie);
+    /* Igual que laboratorio de Servicios; ajustar cuando exista "Misión y valores" arriba */
+    padding: 32px 0 72px;
+}
+
+.diferencia__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    /* Mismo padding que .nav__contenedor: la caja arranca en el logo y termina en el botón */
+    padding: 0 24px;
+}
+
+/* ═══ Encabezado ═══ */
+.diferencia__encabezado {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.diferencia__titulo {
+    font-size: 42px;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+.diferencia__parrafo {
+    max-width: 68ch;
+    margin: 16px auto 0;
+    font-size: 16px;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Tarjeta ═══ */
+/* El rojo solo se ve como franja arriba: el cuerpo ocupa todo el ancho y llega hasta abajo */
+.tarjeta {
+    padding: 0;
+    border-radius: 20px;
+    background: var(--smpte-rojo);
+    box-shadow: 0 8px 20px -12px color-mix(in srgb, var(--act-marino) 16%, transparent);
+}
+
+.tarjeta__franja {
+    margin: 0;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--act-superficie);
+}
+
+.tarjeta__puntos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Arriba 14px deja asomar el rojo; abajo 20px coincide con el contenedor */
+    border-radius: 14px 14px 20px 20px;
+    background: var(--act-fondo-suave);
+}
+
+/* ═══ Pasos ═══ */
+.punto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: var(--dif-padding);
+}
+
+/* Línea solo entre columnas, nunca en los extremos */
+.punto + .punto {
+    border-left: 1px solid var(--act-borde);
+}
+
+.punto__numero {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    color: var(--act-ambar-texto);
+}
+
+.punto__titulo {
+    font-size: 19px;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: var(--act-negro);
+}
+
+.punto__texto {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--act-gris-fuerte);
+}
+
+/* ═══ Responsivo ═══ */
+@media (max-width: 899px) {
+    .tarjeta__puntos { grid-template-columns: minmax(0, 1fr); }
+
+    .punto + .punto {
+        border-left: 0;
+        border-top: 1px solid var(--act-borde);
+    }
+}
+
+@media (max-width: 639px) {
+    .diferencia {
+        --dif-padding: 24px;
+        padding: 56px 0;
+    }
+
+    .diferencia__encabezado { margin-bottom: 32px; }
+
+    .diferencia__titulo { font-size: 30px; }
+}
