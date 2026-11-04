@@ -43,7 +43,6 @@
     margin: 16px 0 24px;
     font-size: 16px;
     line-height: 1.65;
-    /* pizarra sobre ámbar; gris-fuerte apenas pasaría */
     color: var(--act-pizarra);
 }
 
@@ -68,12 +67,12 @@
     border-top: 1px solid rgba(5, 8, 51, 0.18);
 }
 
-/* Negro: un trazo ámbar desaparecería sobre la tarjeta */
+/* Negro: 5.86:1 sobre el cian de la tarjeta */
 .sistema__icono {
     flex: 0 0 auto;
 }
 
-/* Borde marino: el ámbar no se vería sobre la tarjeta */
+/* Caja blanca con borde marino: se despega del cian (blanco/cian 3.59:1) */
 .prueba {
     display: flex;
     flex-direction: column;
