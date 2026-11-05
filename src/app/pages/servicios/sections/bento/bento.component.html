@@ -8,11 +8,8 @@
         <article [id]="servicio.clave"
             class="servicio servicio--{{ servicio.tipo }} servicio--{{ servicio.clave }}">
 
-            <!-- El contenedor fija el tamaño; la imagen solo lo rellena -->
-            <div class="servicio__media">
-                <img class="servicio__imagen" [src]="servicio.imagen" [alt]="servicio.alt"
-                    width="1200" height="800" loading="lazy" decoding="async">
-            </div>
+            <!-- Bloque de color decorativo; el color lo pone la clase de la tarjeta -->
+            <div class="servicio__media" aria-hidden="true"></div>
 
             @if (servicio.tipo === 'foto') {
             <div class="servicio__velo" aria-hidden="true"></div>
