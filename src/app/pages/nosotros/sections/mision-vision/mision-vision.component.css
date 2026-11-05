@@ -54,16 +54,21 @@
     color: var(--act-gris-fuerte);
 }
 
-/* ═══ Imagen (marcador) ═══ */
+/* ═══ Imagen ═══ */
 .fila__imagen {
     width: 100%;
     aspect-ratio: 4 / 3;
     /* Mismo radio que la tarjeta de "Qué nos diferencia" */
     border-radius: 20px;
+    overflow: hidden;
 }
 
-.fila__imagen--cian { background: var(--smpte-cian); }
-.fila__imagen--verde { background: var(--smpte-verde); }
+.fila__foto {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* ═══ Responsivo ═══ */
 @media (max-width: 899px) {

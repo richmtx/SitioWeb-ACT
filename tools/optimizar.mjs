@@ -7,7 +7,7 @@ const ENTRADA = 'tools/originales';
 const SALIDA = 'public/img';
 
 // Ancho máximo y calidad
-const ANCHO = 2560;
+const ANCHO = 1600;
 const CALIDAD = 80;
 
 await mkdir(SALIDA, { recursive: true });
