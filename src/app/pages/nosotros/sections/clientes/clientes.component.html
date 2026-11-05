@@ -1,0 +1,25 @@
+<section class="clientes" aria-labelledby="clientes-titulo">
+  <div class="clientes__marco">
+    <div class="clientes__tarjeta">
+      <div class="clientes__contenido">
+        <h2 id="clientes-titulo" class="clientes__titulo">A quién le vendemos.</h2>
+        <p class="clientes__texto">
+          Televisoras, radiodifusoras, productoras, empresas e instituciones. Lo mismo una estación
+          completa que una refacción.
+        </p>
+
+        <ul class="segmentos">
+          @for (cliente of clientes; track cliente.titulo) {
+          <li class="segmento">
+            <h3 class="segmento__titulo">{{ cliente.titulo }}</h3>
+            <p class="segmento__apoyo">{{ cliente.apoyo }}</p>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Decorativa: el texto ya lo dice todo -->
+    <img class="clientes__luz" src="/img/luz-estudio.png" width="1086" height="1448" alt="" loading="lazy" decoding="async">
+  </div>
+</section>

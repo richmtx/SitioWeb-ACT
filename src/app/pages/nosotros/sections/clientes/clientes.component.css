@@ -1,0 +1,122 @@
+:host {
+    display: block;
+}
+
+/* Arriba 40 + 56 de "Cómo trabajamos" = 96; abajo 56 + 40 del pie = 96 */
+.clientes {
+    background: var(--act-superficie);
+    padding: 40px 24px 56px;
+}
+
+/* La luz se ancla a este marco: su borde inferior = el de la tarjeta */
+.clientes__marco {
+    position: relative;
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+}
+
+/* 560px: cinco puntos de dos líneas piden más alto que llave en mano */
+.clientes__tarjeta {
+    position: relative;
+    z-index: 0;
+    min-height: 560px;
+    padding: 48px clamp(32px, 4vw, 64px);
+    border-radius: 28px;
+    background: var(--smpte-azul);
+    display: flex;
+    align-items: center;
+}
+
+/* El texto se queda en el 58% izquierdo, fuera de la luz */
+.clientes__contenido {
+    max-width: 58%;
+}
+
+/* Blanco sobre azul: 7.84:1 */
+.clientes__titulo {
+    font-size: clamp(30px, 3.4vw, 40px);
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-superficie);
+}
+
+/* Blanco sobre azul: 7.84:1; la jerarquía la marcan tamaño y peso */
+.clientes__texto {
+    margin: 16px 0 16px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--act-superficie);
+}
+
+.segmentos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.segmento {
+    padding: 14px 0;
+}
+
+/* Divisoria solo entre elementos: blanco al 22% */
+.segmento + .segmento {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.segmento__titulo {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: normal;
+    color: var(--act-superficie);
+}
+
+.segmento__apoyo {
+    margin: 4px 0 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--act-superficie);
+}
+
+/* El PNG trae 5 de sus 1448px transparentes arriba: × 1448/1443 hace que
+   la luminaria visible (no la caja) rebase la tarjeta 30px. A 1440 pide 39%
+   de ancho; el tope de 40% la deja crecer sin pisar el texto (57% del marco) */
+.clientes__luz {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    height: calc((100% + 30px) * 1.0035);
+    width: auto;
+    max-width: 40%;
+    object-fit: contain;
+    object-position: right bottom;
+    pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+    .clientes__luz {
+        height: calc(70% + 60px);
+        max-width: 32%;
+    }
+}
+
+@media (max-width: 767px) {
+    .clientes {
+        padding-inline: 16px;
+    }
+
+    .clientes__tarjeta {
+        min-height: 0;
+        padding: 32px 24px;
+    }
+
+    .clientes__contenido {
+        max-width: none;
+    }
+
+    .clientes__luz {
+        display: none;
+    }
+}

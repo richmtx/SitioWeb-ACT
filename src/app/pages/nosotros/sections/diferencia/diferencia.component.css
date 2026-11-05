@@ -9,7 +9,7 @@
 
     background: var(--act-superficie);
     /* Arriba 96px: "Misión y visión" no lleva padding inferior.
-       Abajo 56px + 40px del pie = 96px hasta la tarjeta marino */
+       Abajo 56px + 40px de "A quién le vendemos" = 96px hasta la tarjeta ámbar */
     padding: 96px 0 56px;
 }
 
