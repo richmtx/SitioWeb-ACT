@@ -4,11 +4,11 @@
 }
 
 /* ═══ Sección ═══ */
-/* Primera sección de Nosotros: 64px bajo el navbar. Abajo no lleva padding:
-   los 96px hacia "Qué nos diferencia" los pone esa sección */
+/* Sin padding arriba ni abajo: los 96px desde el encabezado los pone el
+   encabezado, y los 96px hacia "Qué nos diferencia" los pone esa sección */
 .mv {
     background: var(--act-superficie);
-    padding: 64px 0 0;
+    padding: 0;
 }
 
 .mv__contenedor {

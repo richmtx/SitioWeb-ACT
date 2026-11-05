@@ -1,0 +1,51 @@
+/* El host es inline por defecto: block conserva el ancho completo de la franja */
+:host {
+    display: block;
+}
+
+/* ═══ Sección ═══ */
+/* Primera sección de Nosotros: 64px bajo el navbar y 96px hacia misión y visión,
+   que ya no lleva padding superior */
+.encabezado {
+    background: var(--act-superficie);
+    padding: 64px 0 96px;
+}
+
+.encabezado__contenedor {
+    max-width: var(--act-contenedor);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ═══ Logotipo ═══ */
+/* El PNG está recortado al borde de la marca, así que los 64px y 24px son reales.
+   Tope de 420px: más grande, la marca se ve desproporcionada */
+.encabezado__logo {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+}
+
+/* ═══ Título ═══ */
+/* Mismo tratamiento que los <h2> del sitio, un paso más grande. Negro sobre blanco: 21:1 */
+.encabezado__titulo {
+    margin-top: 24px;
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    color: var(--act-negro);
+}
+
+/* ═══ Responsivo ═══ */
+@media (max-width: 767px) {
+    .encabezado { padding-top: 48px; }
+
+    .encabezado__logo { max-width: 280px; }
+}

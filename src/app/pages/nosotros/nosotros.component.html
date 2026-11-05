@@ -1,12 +1,15 @@
 <!-- El <main> ya lo pone app.component; aquí solo va el contenedor de la página.
      Regla de costura: la última sección antes del footer va en --act-superficie. -->
 <div class="nosotros">
-    <!-- 1. Misión y visión -->
+    <!-- 1. Encabezado: logotipo y el único <h1> de la página -->
+    <app-nosotros-encabezado />
+
+    <!-- 2. Misión y visión -->
     <app-nosotros-mision-vision />
 
-    <!-- 2. Qué nos diferencia -->
+    <!-- 3. Qué nos diferencia -->
     <app-nosotros-diferencia />
 
-    <!-- 3. A quién le vendemos -->
+    <!-- 4. A quién le vendemos -->
     <app-nosotros-clientes />
 </div>
